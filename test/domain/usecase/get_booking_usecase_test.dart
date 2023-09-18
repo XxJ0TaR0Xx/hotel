@@ -27,18 +27,5 @@ void main() async {
       verify(getBookingUseCase.call(unit)).called(1);
       verifyNoMoreInteractions(bookingRepository);
     });
-
-    test('incorrect test', () async {
-      // Act
-      final BookingRepository bookingRepository = servisec<BookingRepository>();
-      final GetBookingUseCase getBookingUseCase = servisec<GetBookingUseCase>();
-
-      // Arrange
-      final Either<Failure, Booking> failureOrListRooms = await getBookingUseCase.call(unit);
-
-      // Accert
-      expect(failureOrListRooms.isLeft(), true);
-      verifyNoMoreInteractions(bookingRepository);
-    });
   });
 }

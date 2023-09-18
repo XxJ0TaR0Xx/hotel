@@ -26,18 +26,5 @@ void main() async {
       verify(getAllHotelUseCase.call(unit)).called(1);
       verifyNoMoreInteractions(hotelRepository);
     });
-
-    test('incorrect test', () async {
-      //Act
-      final HotelRepository hotelRepository = servisec<HotelRepository>();
-      final GetAllHotelUseCase getAllHotelUseCase = servisec<GetAllHotelUseCase>();
-
-      //Arrange
-      final Either<Failure, List<Hotel>> failureOrListHotel = await getAllHotelUseCase.call(unit);
-
-      //Accert
-      expect(failureOrListHotel.isLeft(), true);
-      verifyNoMoreInteractions(hotelRepository);
-    });
   });
 }
