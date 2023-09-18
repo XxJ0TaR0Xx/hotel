@@ -6,6 +6,9 @@ import 'package:hotel/src/domain/repositories/hotel_repository.dart';
 import 'package:hotel/src/domain/repositories/room_repository.dart';
 
 import '../test_repositories.mocks.dart';
+import 'arrange/mock_booking_repository.dart';
+import 'arrange/mock_hotel_repository.dart';
+import 'arrange/mock_room_repository.dart';
 
 final GetIt testServices = GetIt.I;
 
@@ -15,6 +18,6 @@ FutureOr<void> initMockTestServices() {
   final HotelRepository hotelRepository = MockHotelRepository();
 
   testServices.registerLazySingleton<RoomRepository>(() => arrangeMockRoomRepository());
-  testServices.registerLazySingleton<BookingRepository>(() => ());
-  testServices.registerLazySingleton<HotelRepository>(() => ());
+  testServices.registerLazySingleton<BookingRepository>(() => arrangeMockBookingRepository());
+  testServices.registerLazySingleton<HotelRepository>(() => arrangeMockHotelRepository());
 }
