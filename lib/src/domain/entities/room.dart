@@ -9,7 +9,14 @@ class Room extends Equatable {
   final List<String> peculiarities;
   final List<String> imageUrls;
 
-  Room({
+  @override
+  List<Object> get props {
+    return [
+      id,
+    ];
+  }
+
+  const Room({
     required this.id,
     required this.name,
     required this.price,
@@ -17,11 +24,4 @@ class Room extends Equatable {
     required this.peculiarities,
     required this.imageUrls,
   });
-
-  @override
-  List<Object> get props {
-    return [
-      id,
-    ];
-  }
 }

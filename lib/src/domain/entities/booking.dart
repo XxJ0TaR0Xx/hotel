@@ -20,7 +20,7 @@ class Booking extends Equatable {
   @override
   List<Object> get props => [id];
 
-  Booking({
+  const Booking({
     required this.id,
     required this.hotelName,
     required this.hotelAdress,

@@ -21,7 +21,7 @@ class Hotel extends Equatable {
     ];
   }
 
-  Hotel({
+  const Hotel({
     required this.id,
     required this.name,
     required this.adress,
