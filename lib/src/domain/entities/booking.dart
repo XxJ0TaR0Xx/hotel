@@ -1,20 +1,20 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 abstract class Bookibg {
-  final String id;
+  final int id;
   final String hotelName;
   final String hotelAdress;
-  final String horating;
+  final int horating;
   final String ratingName;
   final String departure;
   final String arrivalCountry;
-  final String tourDateStart;
-  final String tourDateStop;
-  final String numberOfNights;
+  final DateTime tourDateStart;
+  final DateTime tourDateStop;
+  final int numberOfNights;
   final String room;
   final String nutrition;
-  final String tourPrice;
-  final String fuelCharge;
-  final String serviceCharge;
+  final int tourPrice;
+  final int fuelCharge;
+  final int serviceCharge;
 
   Bookibg({
     required this.id,
