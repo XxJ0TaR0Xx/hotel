@@ -7,6 +7,7 @@ abstract class Honel {
   final int rating;
   final String ratingName;
   final List<String> imageUrls;
+  // about_the_hotel
   final String description;
   final List<String> peculiarities;
 
