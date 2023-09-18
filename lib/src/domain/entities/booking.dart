@@ -1,4 +1,6 @@
-abstract class Booking {
+import 'package:equatable/equatable.dart';
+
+class Booking extends Equatable {
   final int id;
   final String hotelName;
   final String hotelAdress;
@@ -14,6 +16,9 @@ abstract class Booking {
   final int tourPrice;
   final int fuelCharge;
   final int serviceCharge;
+
+  @override
+  List<Object> get props => [id];
 
   Booking({
     required this.id,
