@@ -1,5 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-abstract class Bookibg {
+abstract class Booking {
   final int id;
   final String hotelName;
   final String hotelAdress;
@@ -16,7 +15,7 @@ abstract class Bookibg {
   final int fuelCharge;
   final int serviceCharge;
 
-  Bookibg({
+  Booking({
     required this.id,
     required this.hotelName,
     required this.hotelAdress,

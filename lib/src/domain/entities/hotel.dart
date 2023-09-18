@@ -1,4 +1,4 @@
-abstract class Honel {
+abstract class Hotel {
   final int id;
   final String name;
   final String adress;
@@ -11,7 +11,7 @@ abstract class Honel {
   final String description;
   final List<String> peculiarities;
 
-  Honel({
+  Hotel({
     required this.id,
     required this.name,
     required this.adress,
