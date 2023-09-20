@@ -54,7 +54,8 @@ class _HotelPageState extends State<HotelPage> {
                   intEstimation: 5,
                   textEstimation: 'Превосходно',
                   nameHotel: 'Steigenberger Makadi',
-                  addressHotel: 'Madinat Makadi, Safaga Road, Makadi Bay, Египет',
+                  addressHotel:
+                      'Madinat Makadi, Safaga Road, Makadi Bay, Египет',
                 ),
                 const PriceOfHotel(
                   priceHotel: 'от 134 673',
