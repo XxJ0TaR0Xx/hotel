@@ -24,7 +24,21 @@ void main() async {
 
       // Accert
       expect(failureOrListRooms.isRight(), true);
-      verify(getAllRoomsUseCase.call(unit)).called(1);
+      verify(roomRepository.getAllRooms()).called(1);
+      verifyNoMoreInteractions(roomRepository);
+    });
+
+    test('incorrect test', () async {
+      // Act
+      final RoomRepository roomRepository = servisec<RoomRepository>();
+      final GetAllRoomsUseCase getAllRoomsUseCase = servisec<GetAllRoomsUseCase>();
+
+      // Arrange
+      final Either<Failure, List<Room>> failureOrListRooms = await getAllRoomsUseCase.call(unit);
+
+      // Accert
+      expect(failureOrListRooms.isLeft(), true);
+      verify(roomRepository.getAllRooms()).called(1);
       verifyNoMoreInteractions(roomRepository);
     });
   });

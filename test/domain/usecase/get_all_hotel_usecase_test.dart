@@ -23,7 +23,21 @@ void main() async {
 
       //Accert
       expect(failureOrListHotel.isRight(), true);
-      verify(getAllHotelUseCase.call(unit)).called(1);
+      verify(hotelRepository.getAllHotel()).called(1);
+      verifyNoMoreInteractions(hotelRepository);
+    });
+
+    test('incorret test', () async {
+      //Act
+      final HotelRepository hotelRepository = servisec<HotelRepository>();
+      final GetAllHotelUseCase getAllHotelUseCase = servisec<GetAllHotelUseCase>();
+
+      //Arrange
+      final Either<Failure, List<Hotel>> failureOrListHotel = await getAllHotelUseCase.call(unit);
+
+      //Accert
+      expect(failureOrListHotel.isLeft(), true);
+      verify(hotelRepository.getAllHotel()).called(1);
       verifyNoMoreInteractions(hotelRepository);
     });
   });
