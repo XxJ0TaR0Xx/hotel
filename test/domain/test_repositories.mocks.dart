@@ -10,7 +10,7 @@ import 'package:hotel/core/failures/failure.dart' as _i5;
 import 'package:hotel/src/domain/entities/booking.dart' as _i10;
 import 'package:hotel/src/domain/entities/hotel.dart' as _i8;
 import 'package:hotel/src/domain/entities/room.dart' as _i6;
-import 'package:hotel/src/domain/repositories/booking_repositore.dart' as _i9;
+import 'package:hotel/src/domain/repositories/booking_repository.dart' as _i9;
 import 'package:hotel/src/domain/repositories/hotel_repository.dart' as _i7;
 import 'package:hotel/src/domain/repositories/room_repository.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
@@ -41,23 +41,19 @@ class _FakeEither_0<L, R> extends _i1.SmartFake implements _i2.Either<L, R> {
 /// See the documentation for Mockito's code generation for more information.
 class MockRoomRepository extends _i1.Mock implements _i3.RoomRepository {
   @override
-  _i4.Future<_i2.Either<_i5.Failure, List<_i6.Room>>> getAllRooms() =>
-      (super.noSuchMethod(
+  _i4.Future<_i2.Either<_i5.Failure, List<_i6.Room>>> getAllRooms() => (super.noSuchMethod(
         Invocation.method(
           #getAllRooms,
           [],
         ),
-        returnValue: _i4.Future<_i2.Either<_i5.Failure, List<_i6.Room>>>.value(
-            _FakeEither_0<_i5.Failure, List<_i6.Room>>(
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, List<_i6.Room>>>.value(_FakeEither_0<_i5.Failure, List<_i6.Room>>(
           this,
           Invocation.method(
             #getAllRooms,
             [],
           ),
         )),
-        returnValueForMissingStub:
-            _i4.Future<_i2.Either<_i5.Failure, List<_i6.Room>>>.value(
-                _FakeEither_0<_i5.Failure, List<_i6.Room>>(
+        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.Failure, List<_i6.Room>>>.value(_FakeEither_0<_i5.Failure, List<_i6.Room>>(
           this,
           Invocation.method(
             #getAllRooms,
@@ -72,23 +68,19 @@ class MockRoomRepository extends _i1.Mock implements _i3.RoomRepository {
 /// See the documentation for Mockito's code generation for more information.
 class MockHotelRepository extends _i1.Mock implements _i7.HotelRepository {
   @override
-  _i4.Future<_i2.Either<_i5.Failure, List<_i8.Hotel>>> getAllHotel() =>
-      (super.noSuchMethod(
+  _i4.Future<_i2.Either<_i5.Failure, List<_i8.Hotel>>> getAllHotel() => (super.noSuchMethod(
         Invocation.method(
           #getAllHotel,
           [],
         ),
-        returnValue: _i4.Future<_i2.Either<_i5.Failure, List<_i8.Hotel>>>.value(
-            _FakeEither_0<_i5.Failure, List<_i8.Hotel>>(
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, List<_i8.Hotel>>>.value(_FakeEither_0<_i5.Failure, List<_i8.Hotel>>(
           this,
           Invocation.method(
             #getAllHotel,
             [],
           ),
         )),
-        returnValueForMissingStub:
-            _i4.Future<_i2.Either<_i5.Failure, List<_i8.Hotel>>>.value(
-                _FakeEither_0<_i5.Failure, List<_i8.Hotel>>(
+        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.Failure, List<_i8.Hotel>>>.value(_FakeEither_0<_i5.Failure, List<_i8.Hotel>>(
           this,
           Invocation.method(
             #getAllHotel,
@@ -103,23 +95,19 @@ class MockHotelRepository extends _i1.Mock implements _i7.HotelRepository {
 /// See the documentation for Mockito's code generation for more information.
 class MockBookingRepository extends _i1.Mock implements _i9.BookingRepository {
   @override
-  _i4.Future<_i2.Either<_i5.Failure, _i10.Booking>> getBooking() =>
-      (super.noSuchMethod(
+  _i4.Future<_i2.Either<_i5.Failure, _i10.Booking>> getBooking() => (super.noSuchMethod(
         Invocation.method(
           #getBooking,
           [],
         ),
-        returnValue: _i4.Future<_i2.Either<_i5.Failure, _i10.Booking>>.value(
-            _FakeEither_0<_i5.Failure, _i10.Booking>(
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, _i10.Booking>>.value(_FakeEither_0<_i5.Failure, _i10.Booking>(
           this,
           Invocation.method(
             #getBooking,
             [],
           ),
         )),
-        returnValueForMissingStub:
-            _i4.Future<_i2.Either<_i5.Failure, _i10.Booking>>.value(
-                _FakeEither_0<_i5.Failure, _i10.Booking>(
+        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.Failure, _i10.Booking>>.value(_FakeEither_0<_i5.Failure, _i10.Booking>(
           this,
           Invocation.method(
             #getBooking,

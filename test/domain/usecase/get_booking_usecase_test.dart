@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:hotel/core/failures/failure.dart';
 import 'package:hotel/core/services/servisec.dart';
 import 'package:hotel/src/domain/entities/booking.dart';
-import 'package:hotel/src/domain/repositories/booking_repositore.dart';
+import 'package:hotel/src/domain/repositories/booking_repository.dart';
 import 'package:hotel/src/domain/usecases/get_booking_usecase.dart';
 import 'package:mockito/mockito.dart';
 

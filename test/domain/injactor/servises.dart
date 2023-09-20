@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:get_it/get_it.dart';
-import 'package:hotel/src/domain/repositories/booking_repositore.dart';
+import 'package:hotel/src/domain/repositories/booking_repository.dart';
 import 'package:hotel/src/domain/repositories/hotel_repository.dart';
 import 'package:hotel/src/domain/repositories/room_repository.dart';
 import 'package:hotel/src/domain/usecases/get_all_hotel_usecase.dart';
