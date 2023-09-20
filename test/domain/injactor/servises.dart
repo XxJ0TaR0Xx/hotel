@@ -16,7 +16,6 @@ import 'package:hotel/src/domain/usecases/tourist_usecase/find_all_tourist_useca
 import 'package:hotel/src/domain/usecases/tourist_usecase/find_tourist_usecase.dart';
 import 'package:hotel/src/domain/usecases/tourist_usecase/update_tourist_usecase.dart';
 
-import '../test_repositories.mocks.dart';
 import 'arrange/mock_booking_repository.dart';
 import 'arrange/mock_hotel_repository.dart';
 import 'arrange/mock_room_repository.dart';

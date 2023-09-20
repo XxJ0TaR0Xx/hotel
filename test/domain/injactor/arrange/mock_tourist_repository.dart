@@ -1,13 +1,13 @@
 import 'package:dartz/dartz.dart';
-import 'package:hotel/core/failures/failure.dart';
 import 'package:hotel/src/domain/entities/tourist.dart';
 import 'package:hotel/src/domain/failure/failure.dart';
 import 'package:hotel/src/domain/usecases/tourist_usecase/create_tourist_usecase.dart';
+import 'package:hotel/src/domain/usecases/tourist_usecase/update_tourist_usecase.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../test_repositories.mocks.dart';
 
-// correct params
+// correct create params
 final CreateTouristUseCaseParams createTouristUseCaseParams = CreateTouristUseCaseParams(
   citizenship: correctTourist.citizenship,
   dateOfBirh: correctTourist.dateOfBirh,
@@ -17,6 +17,7 @@ final CreateTouristUseCaseParams createTouristUseCaseParams = CreateTouristUseCa
   surname: correctTourist.surname,
 );
 
+// incorrect create params
 final CreateTouristUseCaseParams incorectParams = CreateTouristUseCaseParams(
   name: '',
   surname: '',
@@ -46,6 +47,12 @@ Tourist correctTourist = Tourist(
 // list torist
 List<Tourist> listTourist = [correctTourist, correctTourist];
 
+// udate paraps
+UpdateTouristUseCaseParams correctupdateTouristParams = UpdateTouristUseCaseParams(
+  id: 1,
+  name: 'Daniil',
+);
+
 // udated tourest
 Tourist updatedTourist = Tourist(
   id: 1,
@@ -73,24 +80,14 @@ MockTouristRepository arrangeMockTouristRepository() {
 
   //! for createTourist
   //correct
-  when(mockTouristRepository.createTourist(
-    citizenship: correctTourist.citizenship,
-    dateOfBirh: correctTourist.dateOfBirh,
-    name: correctTourist.name,
-    passportNumber: correctTourist.passportNumber,
-    passportValidityPeriod: correctTourist.passportValidityPeriod,
-    surname: correctTourist.surname,
-  )).thenAnswer((_) async => Right(correctTourist));
+  when(
+    mockTouristRepository.createTourist(createTouristParams: createTouristUseCaseParams),
+  ).thenAnswer((_) async => Right(correctTourist));
 
   //incorrect
-  when(mockTouristRepository.createTourist(
-    citizenship: incorectParams.citizenship,
-    dateOfBirh: incorectParams.dateOfBirh,
-    name: incorectParams.name,
-    passportNumber: incorectParams.passportNumber,
-    passportValidityPeriod: incorectParams.passportValidityPeriod,
-    surname: incorectParams.surname,
-  )).thenAnswer((_) async => const Left(DeadInsideRequest()));
+  when(
+    mockTouristRepository.createTourist(createTouristParams: incorectParams),
+  ).thenAnswer((_) async => const Left(DeadInsideRequest()));
 
   ///////////////////////
 
@@ -116,7 +113,7 @@ MockTouristRepository arrangeMockTouristRepository() {
   ///////////////////////
 
   //! for updateTourist
-  when(mockTouristRepository.updateTourist(id: correctId, name: 'Daniil')).thenAnswer((_) async => Right(updatedTourist));
+  when(mockTouristRepository.updateTourist(updateTouristUseCaseParams: correctupdateTouristParams)).thenAnswer((_) async => Right(updatedTourist));
 
   ///////////////////////
 

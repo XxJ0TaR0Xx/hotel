@@ -15,6 +15,10 @@ import 'package:hotel/src/domain/repositories/booking_repository.dart' as _i9;
 import 'package:hotel/src/domain/repositories/hotel_repository.dart' as _i7;
 import 'package:hotel/src/domain/repositories/room_repository.dart' as _i3;
 import 'package:hotel/src/domain/repositories/tourist_repository.dart' as _i11;
+import 'package:hotel/src/domain/usecases/tourist_usecase/create_tourist_usecase.dart'
+    as _i13;
+import 'package:hotel/src/domain/usecases/tourist_usecase/update_tourist_usecase.dart'
+    as _i14;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -43,19 +47,23 @@ class _FakeEither_0<L, R> extends _i1.SmartFake implements _i2.Either<L, R> {
 /// See the documentation for Mockito's code generation for more information.
 class MockRoomRepository extends _i1.Mock implements _i3.RoomRepository {
   @override
-  _i4.Future<_i2.Either<_i5.Failure, List<_i6.Room>>> getAllRooms() => (super.noSuchMethod(
+  _i4.Future<_i2.Either<_i5.Failure, List<_i6.Room>>> getAllRooms() =>
+      (super.noSuchMethod(
         Invocation.method(
           #getAllRooms,
           [],
         ),
-        returnValue: _i4.Future<_i2.Either<_i5.Failure, List<_i6.Room>>>.value(_FakeEither_0<_i5.Failure, List<_i6.Room>>(
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, List<_i6.Room>>>.value(
+            _FakeEither_0<_i5.Failure, List<_i6.Room>>(
           this,
           Invocation.method(
             #getAllRooms,
             [],
           ),
         )),
-        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.Failure, List<_i6.Room>>>.value(_FakeEither_0<_i5.Failure, List<_i6.Room>>(
+        returnValueForMissingStub:
+            _i4.Future<_i2.Either<_i5.Failure, List<_i6.Room>>>.value(
+                _FakeEither_0<_i5.Failure, List<_i6.Room>>(
           this,
           Invocation.method(
             #getAllRooms,
@@ -70,19 +78,23 @@ class MockRoomRepository extends _i1.Mock implements _i3.RoomRepository {
 /// See the documentation for Mockito's code generation for more information.
 class MockHotelRepository extends _i1.Mock implements _i7.HotelRepository {
   @override
-  _i4.Future<_i2.Either<_i5.Failure, List<_i8.Hotel>>> getAllHotel() => (super.noSuchMethod(
+  _i4.Future<_i2.Either<_i5.Failure, List<_i8.Hotel>>> getAllHotel() =>
+      (super.noSuchMethod(
         Invocation.method(
           #getAllHotel,
           [],
         ),
-        returnValue: _i4.Future<_i2.Either<_i5.Failure, List<_i8.Hotel>>>.value(_FakeEither_0<_i5.Failure, List<_i8.Hotel>>(
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, List<_i8.Hotel>>>.value(
+            _FakeEither_0<_i5.Failure, List<_i8.Hotel>>(
           this,
           Invocation.method(
             #getAllHotel,
             [],
           ),
         )),
-        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.Failure, List<_i8.Hotel>>>.value(_FakeEither_0<_i5.Failure, List<_i8.Hotel>>(
+        returnValueForMissingStub:
+            _i4.Future<_i2.Either<_i5.Failure, List<_i8.Hotel>>>.value(
+                _FakeEither_0<_i5.Failure, List<_i8.Hotel>>(
           this,
           Invocation.method(
             #getAllHotel,
@@ -97,19 +109,23 @@ class MockHotelRepository extends _i1.Mock implements _i7.HotelRepository {
 /// See the documentation for Mockito's code generation for more information.
 class MockBookingRepository extends _i1.Mock implements _i9.BookingRepository {
   @override
-  _i4.Future<_i2.Either<_i5.Failure, _i10.Booking>> getBooking() => (super.noSuchMethod(
+  _i4.Future<_i2.Either<_i5.Failure, _i10.Booking>> getBooking() =>
+      (super.noSuchMethod(
         Invocation.method(
           #getBooking,
           [],
         ),
-        returnValue: _i4.Future<_i2.Either<_i5.Failure, _i10.Booking>>.value(_FakeEither_0<_i5.Failure, _i10.Booking>(
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, _i10.Booking>>.value(
+            _FakeEither_0<_i5.Failure, _i10.Booking>(
           this,
           Invocation.method(
             #getBooking,
             [],
           ),
         )),
-        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.Failure, _i10.Booking>>.value(_FakeEither_0<_i5.Failure, _i10.Booking>(
+        returnValueForMissingStub:
+            _i4.Future<_i2.Either<_i5.Failure, _i10.Booking>>.value(
+                _FakeEither_0<_i5.Failure, _i10.Booking>(
           this,
           Invocation.method(
             #getBooking,
@@ -124,66 +140,45 @@ class MockBookingRepository extends _i1.Mock implements _i9.BookingRepository {
 /// See the documentation for Mockito's code generation for more information.
 class MockTouristRepository extends _i1.Mock implements _i11.TouristRepository {
   @override
-  _i4.Future<_i2.Either<_i5.Failure, _i12.Tourist>> createTourist({
-    required String? name,
-    required String? surname,
-    required DateTime? dateOfBirh,
-    required String? citizenship,
-    required int? passportNumber,
-    required int? passportValidityPeriod,
-  }) =>
+  _i4.Future<_i2.Either<_i5.Failure, _i12.Tourist>> createTourist(
+          {required _i13.CreateTouristUseCaseParams? createTouristParams}) =>
       (super.noSuchMethod(
         Invocation.method(
           #createTourist,
           [],
-          {
-            #name: name,
-            #surname: surname,
-            #dateOfBirh: dateOfBirh,
-            #citizenship: citizenship,
-            #passportNumber: passportNumber,
-            #passportValidityPeriod: passportValidityPeriod,
-          },
+          {#createTouristParams: createTouristParams},
         ),
-        returnValue: _i4.Future<_i2.Either<_i5.Failure, _i12.Tourist>>.value(_FakeEither_0<_i5.Failure, _i12.Tourist>(
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, _i12.Tourist>>.value(
+            _FakeEither_0<_i5.Failure, _i12.Tourist>(
           this,
           Invocation.method(
             #createTourist,
             [],
-            {
-              #name: name,
-              #surname: surname,
-              #dateOfBirh: dateOfBirh,
-              #citizenship: citizenship,
-              #passportNumber: passportNumber,
-              #passportValidityPeriod: passportValidityPeriod,
-            },
+            {#createTouristParams: createTouristParams},
           ),
         )),
-        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.Failure, _i12.Tourist>>.value(_FakeEither_0<_i5.Failure, _i12.Tourist>(
+        returnValueForMissingStub:
+            _i4.Future<_i2.Either<_i5.Failure, _i12.Tourist>>.value(
+                _FakeEither_0<_i5.Failure, _i12.Tourist>(
           this,
           Invocation.method(
             #createTourist,
             [],
-            {
-              #name: name,
-              #surname: surname,
-              #dateOfBirh: dateOfBirh,
-              #citizenship: citizenship,
-              #passportNumber: passportNumber,
-              #passportValidityPeriod: passportValidityPeriod,
-            },
+            {#createTouristParams: createTouristParams},
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.Failure, _i12.Tourist>>);
   @override
-  _i4.Future<_i2.Either<_i5.Failure, _i12.Tourist>> findOneTourist({required int? id}) => (super.noSuchMethod(
+  _i4.Future<_i2.Either<_i5.Failure, _i12.Tourist>> findOneTourist(
+          {required int? id}) =>
+      (super.noSuchMethod(
         Invocation.method(
           #findOneTourist,
           [],
           {#id: id},
         ),
-        returnValue: _i4.Future<_i2.Either<_i5.Failure, _i12.Tourist>>.value(_FakeEither_0<_i5.Failure, _i12.Tourist>(
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, _i12.Tourist>>.value(
+            _FakeEither_0<_i5.Failure, _i12.Tourist>(
           this,
           Invocation.method(
             #findOneTourist,
@@ -191,7 +186,9 @@ class MockTouristRepository extends _i1.Mock implements _i11.TouristRepository {
             {#id: id},
           ),
         )),
-        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.Failure, _i12.Tourist>>.value(_FakeEither_0<_i5.Failure, _i12.Tourist>(
+        returnValueForMissingStub:
+            _i4.Future<_i2.Either<_i5.Failure, _i12.Tourist>>.value(
+                _FakeEither_0<_i5.Failure, _i12.Tourist>(
           this,
           Invocation.method(
             #findOneTourist,
@@ -201,19 +198,24 @@ class MockTouristRepository extends _i1.Mock implements _i11.TouristRepository {
         )),
       ) as _i4.Future<_i2.Either<_i5.Failure, _i12.Tourist>>);
   @override
-  _i4.Future<_i2.Either<_i5.Failure, List<_i12.Tourist>>> findAllTourist() => (super.noSuchMethod(
+  _i4.Future<_i2.Either<_i5.Failure, List<_i12.Tourist>>> findAllTourist() =>
+      (super.noSuchMethod(
         Invocation.method(
           #findAllTourist,
           [],
         ),
-        returnValue: _i4.Future<_i2.Either<_i5.Failure, List<_i12.Tourist>>>.value(_FakeEither_0<_i5.Failure, List<_i12.Tourist>>(
+        returnValue:
+            _i4.Future<_i2.Either<_i5.Failure, List<_i12.Tourist>>>.value(
+                _FakeEither_0<_i5.Failure, List<_i12.Tourist>>(
           this,
           Invocation.method(
             #findAllTourist,
             [],
           ),
         )),
-        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.Failure, List<_i12.Tourist>>>.value(_FakeEither_0<_i5.Failure, List<_i12.Tourist>>(
+        returnValueForMissingStub:
+            _i4.Future<_i2.Either<_i5.Failure, List<_i12.Tourist>>>.value(
+                _FakeEither_0<_i5.Failure, List<_i12.Tourist>>(
           this,
           Invocation.method(
             #findAllTourist,
@@ -222,13 +224,16 @@ class MockTouristRepository extends _i1.Mock implements _i11.TouristRepository {
         )),
       ) as _i4.Future<_i2.Either<_i5.Failure, List<_i12.Tourist>>>);
   @override
-  _i4.Future<_i2.Either<_i5.Failure, _i2.Unit>> deleteTorist({required int? id}) => (super.noSuchMethod(
+  _i4.Future<_i2.Either<_i5.Failure, _i2.Unit>> deleteTorist(
+          {required int? id}) =>
+      (super.noSuchMethod(
         Invocation.method(
           #deleteTorist,
           [],
           {#id: id},
         ),
-        returnValue: _i4.Future<_i2.Either<_i5.Failure, _i2.Unit>>.value(_FakeEither_0<_i5.Failure, _i2.Unit>(
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, _i2.Unit>>.value(
+            _FakeEither_0<_i5.Failure, _i2.Unit>(
           this,
           Invocation.method(
             #deleteTorist,
@@ -236,7 +241,9 @@ class MockTouristRepository extends _i1.Mock implements _i11.TouristRepository {
             {#id: id},
           ),
         )),
-        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.Failure, _i2.Unit>>.value(_FakeEither_0<_i5.Failure, _i2.Unit>(
+        returnValueForMissingStub:
+            _i4.Future<_i2.Either<_i5.Failure, _i2.Unit>>.value(
+                _FakeEither_0<_i5.Failure, _i2.Unit>(
           this,
           Invocation.method(
             #deleteTorist,
@@ -246,59 +253,32 @@ class MockTouristRepository extends _i1.Mock implements _i11.TouristRepository {
         )),
       ) as _i4.Future<_i2.Either<_i5.Failure, _i2.Unit>>);
   @override
-  _i4.Future<_i2.Either<_i5.Failure, _i12.Tourist>> updateTourist({
-    required dynamic id,
-    dynamic name,
-    dynamic surname,
-    dynamic dateOfBirh,
-    dynamic citizenship,
-    dynamic passportNumber,
-    dynamic passportValidityPeriod,
-  }) =>
+  _i4.Future<_i2.Either<_i5.Failure, _i12.Tourist>> updateTourist(
+          {required _i14.UpdateTouristUseCaseParams?
+              updateTouristUseCaseParams}) =>
       (super.noSuchMethod(
         Invocation.method(
           #updateTourist,
           [],
-          {
-            #id: id,
-            #name: name,
-            #surname: surname,
-            #dateOfBirh: dateOfBirh,
-            #citizenship: citizenship,
-            #passportNumber: passportNumber,
-            #passportValidityPeriod: passportValidityPeriod,
-          },
+          {#updateTouristUseCaseParams: updateTouristUseCaseParams},
         ),
-        returnValue: _i4.Future<_i2.Either<_i5.Failure, _i12.Tourist>>.value(_FakeEither_0<_i5.Failure, _i12.Tourist>(
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, _i12.Tourist>>.value(
+            _FakeEither_0<_i5.Failure, _i12.Tourist>(
           this,
           Invocation.method(
             #updateTourist,
             [],
-            {
-              #id: id,
-              #name: name,
-              #surname: surname,
-              #dateOfBirh: dateOfBirh,
-              #citizenship: citizenship,
-              #passportNumber: passportNumber,
-              #passportValidityPeriod: passportValidityPeriod,
-            },
+            {#updateTouristUseCaseParams: updateTouristUseCaseParams},
           ),
         )),
-        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.Failure, _i12.Tourist>>.value(_FakeEither_0<_i5.Failure, _i12.Tourist>(
+        returnValueForMissingStub:
+            _i4.Future<_i2.Either<_i5.Failure, _i12.Tourist>>.value(
+                _FakeEither_0<_i5.Failure, _i12.Tourist>(
           this,
           Invocation.method(
             #updateTourist,
             [],
-            {
-              #id: id,
-              #name: name,
-              #surname: surname,
-              #dateOfBirh: dateOfBirh,
-              #citizenship: citizenship,
-              #passportNumber: passportNumber,
-              #passportValidityPeriod: passportValidityPeriod,
-            },
+            {#updateTouristUseCaseParams: updateTouristUseCaseParams},
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.Failure, _i12.Tourist>>);
