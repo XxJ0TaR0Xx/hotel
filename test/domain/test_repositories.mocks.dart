@@ -10,9 +10,11 @@ import 'package:hotel/core/failures/failure.dart' as _i5;
 import 'package:hotel/src/domain/entities/booking.dart' as _i10;
 import 'package:hotel/src/domain/entities/hotel.dart' as _i8;
 import 'package:hotel/src/domain/entities/room.dart' as _i6;
+import 'package:hotel/src/domain/entities/tourist.dart' as _i12;
 import 'package:hotel/src/domain/repositories/booking_repository.dart' as _i9;
 import 'package:hotel/src/domain/repositories/hotel_repository.dart' as _i7;
 import 'package:hotel/src/domain/repositories/room_repository.dart' as _i3;
+import 'package:hotel/src/domain/repositories/tourist_repository.dart' as _i11;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -115,4 +117,189 @@ class MockBookingRepository extends _i1.Mock implements _i9.BookingRepository {
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.Failure, _i10.Booking>>);
+}
+
+/// A class which mocks [TouristRepository].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockTouristRepository extends _i1.Mock implements _i11.TouristRepository {
+  @override
+  _i4.Future<_i2.Either<_i5.Failure, _i12.Tourist>> createTourist({
+    required String? name,
+    required String? surname,
+    required DateTime? dateOfBirh,
+    required String? citizenship,
+    required int? passportNumber,
+    required int? passportValidityPeriod,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #createTourist,
+          [],
+          {
+            #name: name,
+            #surname: surname,
+            #dateOfBirh: dateOfBirh,
+            #citizenship: citizenship,
+            #passportNumber: passportNumber,
+            #passportValidityPeriod: passportValidityPeriod,
+          },
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, _i12.Tourist>>.value(_FakeEither_0<_i5.Failure, _i12.Tourist>(
+          this,
+          Invocation.method(
+            #createTourist,
+            [],
+            {
+              #name: name,
+              #surname: surname,
+              #dateOfBirh: dateOfBirh,
+              #citizenship: citizenship,
+              #passportNumber: passportNumber,
+              #passportValidityPeriod: passportValidityPeriod,
+            },
+          ),
+        )),
+        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.Failure, _i12.Tourist>>.value(_FakeEither_0<_i5.Failure, _i12.Tourist>(
+          this,
+          Invocation.method(
+            #createTourist,
+            [],
+            {
+              #name: name,
+              #surname: surname,
+              #dateOfBirh: dateOfBirh,
+              #citizenship: citizenship,
+              #passportNumber: passportNumber,
+              #passportValidityPeriod: passportValidityPeriod,
+            },
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.Failure, _i12.Tourist>>);
+  @override
+  _i4.Future<_i2.Either<_i5.Failure, _i12.Tourist>> findOneTourist({required int? id}) => (super.noSuchMethod(
+        Invocation.method(
+          #findOneTourist,
+          [],
+          {#id: id},
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, _i12.Tourist>>.value(_FakeEither_0<_i5.Failure, _i12.Tourist>(
+          this,
+          Invocation.method(
+            #findOneTourist,
+            [],
+            {#id: id},
+          ),
+        )),
+        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.Failure, _i12.Tourist>>.value(_FakeEither_0<_i5.Failure, _i12.Tourist>(
+          this,
+          Invocation.method(
+            #findOneTourist,
+            [],
+            {#id: id},
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.Failure, _i12.Tourist>>);
+  @override
+  _i4.Future<_i2.Either<_i5.Failure, List<_i12.Tourist>>> findAllTourist() => (super.noSuchMethod(
+        Invocation.method(
+          #findAllTourist,
+          [],
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, List<_i12.Tourist>>>.value(_FakeEither_0<_i5.Failure, List<_i12.Tourist>>(
+          this,
+          Invocation.method(
+            #findAllTourist,
+            [],
+          ),
+        )),
+        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.Failure, List<_i12.Tourist>>>.value(_FakeEither_0<_i5.Failure, List<_i12.Tourist>>(
+          this,
+          Invocation.method(
+            #findAllTourist,
+            [],
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.Failure, List<_i12.Tourist>>>);
+  @override
+  _i4.Future<_i2.Either<_i5.Failure, _i2.Unit>> deleteTorist({required int? id}) => (super.noSuchMethod(
+        Invocation.method(
+          #deleteTorist,
+          [],
+          {#id: id},
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, _i2.Unit>>.value(_FakeEither_0<_i5.Failure, _i2.Unit>(
+          this,
+          Invocation.method(
+            #deleteTorist,
+            [],
+            {#id: id},
+          ),
+        )),
+        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.Failure, _i2.Unit>>.value(_FakeEither_0<_i5.Failure, _i2.Unit>(
+          this,
+          Invocation.method(
+            #deleteTorist,
+            [],
+            {#id: id},
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.Failure, _i2.Unit>>);
+  @override
+  _i4.Future<_i2.Either<_i5.Failure, _i12.Tourist>> updateTourist({
+    required dynamic id,
+    dynamic name,
+    dynamic surname,
+    dynamic dateOfBirh,
+    dynamic citizenship,
+    dynamic passportNumber,
+    dynamic passportValidityPeriod,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateTourist,
+          [],
+          {
+            #id: id,
+            #name: name,
+            #surname: surname,
+            #dateOfBirh: dateOfBirh,
+            #citizenship: citizenship,
+            #passportNumber: passportNumber,
+            #passportValidityPeriod: passportValidityPeriod,
+          },
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, _i12.Tourist>>.value(_FakeEither_0<_i5.Failure, _i12.Tourist>(
+          this,
+          Invocation.method(
+            #updateTourist,
+            [],
+            {
+              #id: id,
+              #name: name,
+              #surname: surname,
+              #dateOfBirh: dateOfBirh,
+              #citizenship: citizenship,
+              #passportNumber: passportNumber,
+              #passportValidityPeriod: passportValidityPeriod,
+            },
+          ),
+        )),
+        returnValueForMissingStub: _i4.Future<_i2.Either<_i5.Failure, _i12.Tourist>>.value(_FakeEither_0<_i5.Failure, _i12.Tourist>(
+          this,
+          Invocation.method(
+            #updateTourist,
+            [],
+            {
+              #id: id,
+              #name: name,
+              #surname: surname,
+              #dateOfBirh: dateOfBirh,
+              #citizenship: citizenship,
+              #passportNumber: passportNumber,
+              #passportValidityPeriod: passportValidityPeriod,
+            },
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.Failure, _i12.Tourist>>);
 }
