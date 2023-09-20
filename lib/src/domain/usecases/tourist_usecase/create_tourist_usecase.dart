@@ -16,12 +16,7 @@ class CreateTouristUsecase extends UseCase<Tourist, CreateTouristUseCaseParams> 
     final TouristRepository touristRepository = servisec.get<TouristRepository>();
 
     return touristRepository.createTourist(
-      name: params.name,
-      surname: params.surname,
-      dateOfBirh: params.dateOfBirh,
-      citizenship: params.citizenship,
-      passportNumber: params.passportNumber,
-      passportValidityPeriod: params.passportValidityPeriod,
+      createTouristParams: params,
     );
   }
 }

@@ -13,15 +13,7 @@ class UpdateTouristUsecase extends UseCase<Tourist, UpdateTouristUseCaseParams> 
   Future<Either<Failure, Tourist>> call(UpdateTouristUseCaseParams params) {
     final TouristRepository touristRepository = servisec.get<TouristRepository>();
 
-    return touristRepository.updateTourist(
-      id: params.id,
-      name: params.name,
-      surname: params.surname,
-      dateOfBirh: params.dateOfBirh,
-      citizenship: params.citizenship,
-      passportNumber: params.passportNumber,
-      passportValidityPeriod: params.passportValidityPeriod,
-    );
+    return touristRepository.updateTourist(updateTouristUseCaseParams: params);
   }
 }
 
