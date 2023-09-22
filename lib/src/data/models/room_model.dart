@@ -38,7 +38,7 @@ class RoomModel extends Room {
       id: map['id'] as int,
       name: mapAttributes['name'] as String,
       price: mapAttributes['price'] as int,
-      pricePer: mapAttributes['pricePer'] as String,
+      pricePer: mapAttributes['price_per'] as String,
       peculiarities: listPeculiarities,
       imageUrls: listImageUrls,
     );
