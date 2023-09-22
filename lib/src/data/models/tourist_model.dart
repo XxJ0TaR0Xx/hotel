@@ -13,13 +13,13 @@ class TouristModel extends Tourist {
     required super.passportValidityPeriod,
   });
 
+  //DateUtils.dateOnly(dateOfBirh)
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'attributes': {
-        'name': name,
-        'surname': surname,
-        'Date_of_birth': dateOfBirh,
+      'data': {
+        'Name': name,
+        'Surname': surname,
+        'Date_of_birth': '${dateOfBirh.year}-0${dateOfBirh.month}-${dateOfBirh.day}',
         'citizenship': citizenship,
         'passport_number': passportNumber,
         'Passport_validity_period': passportValidityPeriod,
@@ -31,8 +31,8 @@ class TouristModel extends Tourist {
     Map<String, dynamic> mapAttributes = map['attributes'];
     return TouristModel(
       id: map['id'] as int,
-      name: mapAttributes['name'] as String,
-      surname: mapAttributes['surname'] as String,
+      name: mapAttributes['Name'] as String,
+      surname: mapAttributes['Surname'] as String,
       dateOfBirh: DateTime.parse(mapAttributes['Date_of_birth']),
       citizenship: mapAttributes['citizenship'] as String,
       passportNumber: mapAttributes['passport_number'] as int,
