@@ -22,7 +22,7 @@ BookingModel correctBooking = BookingModel(
   serviceCharge: 2150,
 );
 
-Future<void> main() async {
+void main() async {
   group('methods BookingModel test', () {
     group('method fromMap', () {
       test('correct test', () async {

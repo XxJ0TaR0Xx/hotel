@@ -9,7 +9,7 @@ import 'package:mockito/mockito.dart';
 
 import '../injactor/servises.dart';
 
-void main() async {
+Future<void> main() async {
   await initMockTestServices();
   await initUsecaseTestServises();
   group('Get_All_Hotel_Usecase test', () {

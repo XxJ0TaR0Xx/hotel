@@ -21,7 +21,7 @@ HotelModel correctHotel = const HotelModel(
   peculiarities: ["Бесплатный Wifi на всей территории отеля", "1 км до пляжа", "Бесплатный фитнес-клуб", "20 км до аэропорта"],
 );
 
-Future<void> main() async {
+void main() {
   group('methods BookingModel test', () {
     group('method fromMap', () {
       test('correct test', () async {
