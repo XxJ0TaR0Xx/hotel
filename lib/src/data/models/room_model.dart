@@ -30,19 +30,6 @@ class RoomModel extends Room {
     );
   }
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'attributes': {
-        'name': name,
-        'price': price,
-        'price_per': pricePer,
-        'peculiarities': peculiarities,
-        'image_urls': imageUrls,
-      },
-    };
-  }
-
   factory RoomModel.fromMap(Map<String, dynamic> map) {
     Map<String, dynamic> mapAttributes = map['attributes'];
     List<String> listPeculiarities = mapAttributes['peculiarities'].toString().split(',');
@@ -56,8 +43,6 @@ class RoomModel extends Room {
       imageUrls: listImageUrls,
     );
   }
-
-  String toJson() => json.encode(toMap());
 
   factory RoomModel.fromJson(String source) => RoomModel.fromMap(json.decode(source) as Map<String, dynamic>);
 

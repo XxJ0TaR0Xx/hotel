@@ -13,26 +13,6 @@ class TouristModel extends Tourist {
     required super.passportValidityPeriod,
   });
 
-  TouristModel copyWith({
-    int? id,
-    String? name,
-    String? surname,
-    DateTime? dateOfBirh,
-    String? citizenship,
-    int? passportNumber,
-    int? passportValidityPeriod,
-  }) {
-    return TouristModel(
-      id: id ?? this.id,
-      name: name ?? this.name,
-      surname: surname ?? this.surname,
-      dateOfBirh: dateOfBirh ?? this.dateOfBirh,
-      citizenship: citizenship ?? this.citizenship,
-      passportNumber: passportNumber ?? this.passportNumber,
-      passportValidityPeriod: passportValidityPeriod ?? this.passportValidityPeriod,
-    );
-  }
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,

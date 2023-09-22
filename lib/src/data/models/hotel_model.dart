@@ -42,23 +42,6 @@ class HotelModel extends Hotel {
     );
   }
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'attributes': {
-        'name': name,
-        'adress': adress,
-        'minimal_price': minimalPrice,
-        'price_for_it': priceForIt,
-        'rating': rating,
-        'rating_name': ratingName,
-        'image_urls': imageUrls.toString(),
-        'description': description,
-        'peculiarities': peculiarities.toString(),
-      },
-    };
-  }
-
   factory HotelModel.fromMap(Map<String, dynamic> map) {
     Map<String, dynamic> mapAttributes = map['attributes'];
     List<String> listImageUrls = mapAttributes['imageUrls'].toString().split(',');
@@ -76,8 +59,6 @@ class HotelModel extends Hotel {
       peculiarities: listPeculiarities,
     );
   }
-
-  String toJson() => json.encode(toMap());
 
   factory HotelModel.fromJson(String source) => HotelModel.fromMap(json.decode(source) as Map<String, dynamic>);
 

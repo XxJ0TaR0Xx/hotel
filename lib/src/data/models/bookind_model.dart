@@ -3,14 +3,6 @@ import 'dart:convert';
 
 import 'package:hotel/src/domain/entities/booking.dart';
 
-String addNull({required int number}) {
-  if (number < 10) {
-    return '0$number';
-  } else {
-    return number.toString();
-  }
-}
-
 class BookingModel extends Booking {
   const BookingModel({
     required super.id,
@@ -66,28 +58,6 @@ class BookingModel extends Booking {
     );
   }
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'attributes': {
-        'hotel_name': hotelName,
-        'hotel_adress': hotelAdress,
-        'horating': horating,
-        'rating_name': ratingName,
-        'departure': departure,
-        'arrival_country': arrivalCountry,
-        'tour_date_start': "${tourDateStart.year}-${addNull(number: tourDateStart.month)}-${addNull(number: tourDateStart.day)}",
-        'tour_date_stop': "${tourDateStop.year}-${addNull(number: tourDateStop.month)}-${addNull(number: tourDateStop.day)}",
-        'number_of_nights': numberOfNights,
-        'room': room,
-        'nutrition': nutrition,
-        'tour_price': tourPrice,
-        'fuel_charge': fuelCharge,
-        'service_charge': serviceCharge,
-      },
-    };
-  }
-
   factory BookingModel.fromMap(Map<String, dynamic> map) {
     Map<String, dynamic> attributesMap = map['attributes'];
     return BookingModel(
@@ -108,8 +78,6 @@ class BookingModel extends Booking {
       serviceCharge: attributesMap['service_charge'] as int,
     );
   }
-
-  String toJson() => json.encode(toMap());
 
   factory BookingModel.fromJson(String source) => BookingModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
