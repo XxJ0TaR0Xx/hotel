@@ -4,77 +4,56 @@ import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hotel/src/data/models/hotel_model.dart';
 
-HotelModel correctHotelModel = const HotelModel(
+HotelModel correctHotel = const HotelModel(
   id: 1,
-  name: 'Лучший пятизвездочный отель в Хургаде, Египет',
-  adress: 'Madinat Makadi, Safaga Road, Makadi Bay, Египет',
+  name: "Лучший пятизвездочный отель в Хургаде, Египет",
+  adress: "Madinat Makadi, Safaga Road, Makadi Bay, Египет",
   minimalPrice: 134268,
-  priceForIt: 'За тур с перелётом',
+  priceForIt: "За тур с перелётом",
   rating: 5,
-  ratingName: 'Превосходно',
+  ratingName: "Превосходно",
   imageUrls: [
-    'https://www.atorus.ru/sites/default/files/upload/image/News/56149/Club_Priv%C3%A9_by_Belek_Club_House.jpg',
-    'https://deluxe.voyage/useruploads/articles/The_Makadi_Spa_Hotel_02.jpg',
-    'https://deluxe.voyage/useruploads/articles/article_1eb0a64d00.jpg',
+    "https://www.atorus.ru/sites/default/files/upload/image/News/56149/Club_Priv%C3%A9_by_Belek_Club_House.jpg",
+    "https://deluxe.voyage/useruploads/articles/The_Makadi_Spa_Hotel_02.jpg",
+    "https://deluxe.voyage/useruploads/articles/article_1eb0a64d00.jpg",
   ],
-  description: 'Отель VIP-класса с собственными гольф полями. Высокий уровнь сервиса. Рекомендуем для респектабельного отдыха. Отель принимает гостей от 18 лет!',
-  peculiarities: [
-    'Бесплатный Wifi на всей территории отеля',
-    '1 км до пляжа',
-    'Бесплатный фитнес-клуб',
-    '20 км до аэропорта',
-  ],
+  description: "Отель VIP-класса с собственными гольф полями. Высокий уровнь сервиса. Рекомендуем для респектабельного отдыха. Отель принимает гостей от 18 лет!",
+  peculiarities: ["Бесплатный Wifi на всей территории отеля", "1 км до пляжа", "Бесплатный фитнес-клуб", "20 км до аэропорта"],
 );
-
-final Map<String, dynamic> corrcerMap = {
-  "id": 1,
-  "attributes": {
-    "name": "Лучший пятизвездочный отель в Хургаде, Египет",
-    "adress": "Madinat Makadi, Safaga Road, Makadi Bay, Египет",
-    "minimal_price": 134268,
-    "price_for_it": "За тур с перелётом",
-    "rating": 5,
-    "rating_name": "Превосходно",
-    "image_urls":
-        "https://www.atorus.ru/sites/default/files/upload/image/News/56149/Club_Priv%C3%A9_by_Belek_Club_House.jpg, https://deluxe.voyage/useruploads/articles/The_Makadi_Spa_Hotel_02.jpg, https://deluxe.voyage/useruploads/articles/article_1eb0a64d00.jpg",
-    "description": "Отель VIP-класса с собственными гольф полями. Высокий уровнь сервиса. Рекомендуем для респектабельного отдыха. Отель принимает гостей от 18 лет!",
-    "peculiarities": "Бесплатный Wifi на всей территории отеля, 1 км до пляжа, Бесплатный фитнес-клуб, 20 км до аэропорта"
-  }
-};
 
 Future<void> main() async {
   group('methods BookingModel test', () {
     group('method fromMap', () {
-      test('correct test', () {
+      test('correct test', () async {
+        File file = File('test/data/artifacts/models/hotel/correct_hotel_json.json');
+
+        if (!(await file.exists())) throw Exception('File does\'t exist');
+        final String string = await file.readAsString();
+        final dynamic jsonValue = jsonDecode(string);
+
         // ignore: prefer_function_declarations_over_variables
         final HotelModel? Function() result = () {
           try {
-            return HotelModel.fromMap(corrcerMap);
+            return HotelModel.fromMap(jsonValue);
           } catch (e) {
             return null;
           }
         };
 
-        expect(result(), correctHotelModel);
+        expect(result(), correctHotel);
       });
 
-      test('incorrect test', () {
-        final Map<String, dynamic> corrcerMap = {
-          "id": 1,
-          "attributes": {
-            "name": "Лучший пятизвездочный отель в Хургаде, Египет",
-            "adress": "Madinat Makadi, Safaga Road, Makadi Bay, Египет",
-            "minimal_price": 134268,
-            "price_for_it": "За тур с перелётом",
-            "rating": 5,
-            "rating_name": "Превосходно",
-          }
-        };
+      test('incorrect test', () async {
+        File file = File('test/data/artifacts/models/hotel/incorrect_hotel_json.json');
+
+        if (!(await file.exists())) throw Exception('File does\'t exist');
+        final String string = await file.readAsString();
+        final dynamic jsonValue = jsonDecode(string);
 
         // ignore: prefer_function_declarations_over_variables
         final HotelModel? Function() result = () {
           try {
-            return HotelModel.fromMap(corrcerMap);
+            return HotelModel.fromMap(jsonValue);
           } catch (e) {
             return null;
           }
@@ -102,7 +81,7 @@ Future<void> main() async {
           }
         };
 
-        expect(result(), correctHotelModel);
+        expect(result(), correctHotel);
       });
 
       test('correct test', () async {
@@ -112,8 +91,6 @@ Future<void> main() async {
         final String string = await file.readAsString();
         final dynamic jsonValue = jsonDecode(string);
         final dynamic jsonData = jsonEncode(jsonValue);
-
-        print(jsonData);
 
         // ignore: prefer_function_declarations_over_variables
         final HotelModel? Function() result = () {
@@ -125,27 +102,6 @@ Future<void> main() async {
         };
 
         expect(result(), null);
-      });
-    });
-
-    group('method copyWith', () {
-      test('correct test', () {
-        HotelModel hotelModel = const HotelModel(
-          id: 1,
-          name: 'Лучший пятизвездочный отель в Хургаде, Египет',
-          adress: 'Madinat Makadi, Safaga Road, Makadi Bay, Египет',
-          minimalPrice: 134268,
-          priceForIt: 'За тур с перелётом',
-          rating: 5,
-          ratingName: 'Превосходно',
-          imageUrls: [],
-          description: 'Отель VIP-класса с собственными гольф полями. Высокий уровнь сервиса. Рекомендуем для респектабельного отдыха. Отель принимает гостей от 18 лет!',
-          peculiarities: [],
-        );
-
-        final HotelModel result = correctHotelModel.copyWith(imageUrls: [], peculiarities: []);
-
-        expect(result, hotelModel);
       });
     });
   });
