@@ -13,13 +13,13 @@ class TouristModel extends Tourist {
     required super.passportValidityPeriod,
   });
 
+  //DateUtils.dateOnly(dateOfBirh)
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'attributes': {
-        'name': name,
-        'surname': surname,
-        'Date_of_birth': dateOfBirh,
+      'data': {
+        'Name': name,
+        'Surname': surname,
+        'Date_of_birth': '${dateOfBirh.year}-0${dateOfBirh.month}-${dateOfBirh.day}',
         'citizenship': citizenship,
         'passport_number': passportNumber,
         'Passport_validity_period': passportValidityPeriod,

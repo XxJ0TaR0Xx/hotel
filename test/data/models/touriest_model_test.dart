@@ -116,32 +116,70 @@ void main() async {
       });
     });
 
-    group('method toMap', () {
-      test('correct test', () {
-        // Act.
-        // Arrange.
-        // Accert.
-      });
+    test('Method toMap Test', () {
+      // Act.
+      final Map<String, dynamic> correctMap = {
+        'id': 1,
+        'attributes': {
+          'name': 'Admin',
+          'surname': 'Admin',
+          'Date_of_birth': DateTime.parse('2023-08-31'),
+          'citizenship': 'РФ',
+          'passport_number': 1,
+          'Passport_validity_period': 1,
+        }
+      };
 
-      test('incorrect test', () {
-        // Act.
-        // Arrange.
-        // Accert.
-      });
+      final TouristModel touristModel = TouristModel(
+        id: 1,
+        name: 'Admin',
+        surname: 'Admin',
+        dateOfBirh: DateTime.parse('2023-08-31'),
+        citizenship: 'РФ',
+        passportNumber: 1,
+        passportValidityPeriod: 1,
+      );
+
+      // Arrange.
+      final Map<String, dynamic> result = touristModel.toMap();
+
+      // Assert.
+      expect(result, correctMap);
     });
 
-    group('method toJson', () {
-      test('correct test', () {
-        // Act.
-        // Arrange.
-        // Accert.
+    test('Method toJson Test', () {
+      // Act.
+
+      final String correctJSON = jsonEncode({
+        "id": 1,
+        "data": {
+          'name': 'Admin',
+          'surname': 'Admin',
+          'Date_of_birth': '2023-08-31',
+          'citizenship': 'РФ',
+          'passport_number': 1,
+          'Passport_validity_period': 1,
+        },
       });
 
-      test('incorrect test', () {
-        // Act.
-        // Arrange.
-        // Accert.
-      });
+      final TouristModel touristModel = TouristModel(
+        id: 1,
+        name: 'Admin',
+        surname: 'Admin',
+        // DateTime(now.year, now.month, now.day)
+        // 'Date_of_birth': '${dateOfBirh.year}-0${dateOfBirh.month}-${dateOfBirh.day}',
+        dateOfBirh: DateTime('${2023.year},'),
+        citizenship: 'РФ',
+        passportNumber: 1,
+        passportValidityPeriod: 1,
+      );
+
+      print(touristModel);
+      // Arrange.
+      final String result = touristModel.toJson();
+
+      // Assert.
+      expect(result, correctJSON);
     });
   });
 }
