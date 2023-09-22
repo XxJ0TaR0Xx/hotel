@@ -78,7 +78,7 @@ class BookingModel extends Booking {
       serviceCharge: attributesMap['service_charge'] as int,
     );
   }
-
+  //for you
   factory BookingModel.fromJson(String source) => BookingModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
