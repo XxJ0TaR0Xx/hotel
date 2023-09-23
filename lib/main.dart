@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotel/src/presentation/src/app.dart';
 
-void main() {
+Future<void> main() async {
   runApp(const App());
 }
