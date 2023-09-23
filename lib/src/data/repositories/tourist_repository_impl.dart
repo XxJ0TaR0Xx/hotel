@@ -7,7 +7,9 @@ import 'package:hotel/src/domain/entities/tourist.dart';
 import 'package:hotel/src/domain/repositories/tourist_repository.dart';
 import 'package:hotel/src/domain/usecases/tourist_usecase/create_tourist_usecase.dart';
 import 'package:hotel/src/domain/usecases/tourist_usecase/update_tourist_usecase.dart';
+import 'package:injectable/injectable.dart';
 
+@Injectable(as: TouristRepository)
 class TouristrepositoriImpl implements TouristRepository {
   final TouristDatasource touristDatasource;
   TouristrepositoriImpl({required this.touristDatasource});

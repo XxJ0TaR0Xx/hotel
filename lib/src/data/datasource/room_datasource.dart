@@ -1,16 +1,19 @@
 import 'package:dio/dio.dart';
+import 'package:hotel/core/services/servisec.dart';
 import 'package:hotel/src/data/models/room_model.dart';
 import 'package:hotel/src/data/utils/status_code_hendler.dart';
+import 'package:injectable/injectable.dart';
 
+@Injectable()
 class RoomDatasour {
-  final Dio dio;
+  final DioModule dio;
   RoomDatasour({required this.dio});
 
   static const String httpRooms = 'http://127.0.0.1:1337/api/rooms/';
 
   Future<List<RoomModel>> getAllRoomModel() async {
     try {
-      final Response response = await dio.request(
+      final Response response = await dio.clietn.request(
         httpRooms,
         options: Options(
           method: 'GET',
@@ -34,7 +37,7 @@ class RoomDatasour {
 
   Future<RoomModel> getOneRoomModel({required int id}) async {
     try {
-      final Response response = await dio.request(
+      final Response response = await dio.clietn.request(
         '$httpRooms$id',
         options: Options(
           method: 'GET',

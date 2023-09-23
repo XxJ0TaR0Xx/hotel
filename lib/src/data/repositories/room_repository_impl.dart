@@ -5,7 +5,9 @@ import 'package:hotel/src/data/datasource/room_datasource.dart';
 import 'package:hotel/src/data/failures/trace_failures.dart';
 import 'package:hotel/src/domain/entities/room.dart';
 import 'package:hotel/src/domain/repositories/room_repository.dart';
+import 'package:injectable/injectable.dart';
 
+@Injectable(as: RoomRepository)
 class RoomRepositoryImpl implements RoomRepository {
   final RoomDatasour roomDatasour;
 

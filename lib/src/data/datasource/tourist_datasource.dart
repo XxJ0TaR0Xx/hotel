@@ -1,10 +1,13 @@
 import 'package:dio/dio.dart';
+import 'package:hotel/core/services/servisec.dart';
 import 'package:hotel/src/data/models/tourist_model.dart';
 import 'package:hotel/src/data/utils/status_code_hendler.dart';
 import 'package:hotel/src/domain/usecases/tourist_usecase/create_tourist_usecase.dart';
+import 'package:injectable/injectable.dart';
 
+@Injectable()
 class TouristDatasource {
-  final Dio dio;
+  final DioModule dio;
   TouristDatasource({required this.dio});
 
   Map<String, String> headers = {'Content-Type': 'application/json'};
@@ -20,7 +23,7 @@ class TouristDatasource {
       surname: createTouristUseCaseParams.surname,
     );
 
-    Response response = await dio.request(
+    Response response = await dio.clietn.request(
       'http://127.0.0.1:1337/api/tourists',
       options: Options(
         method: 'POST',
