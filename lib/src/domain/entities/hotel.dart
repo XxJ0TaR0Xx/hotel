@@ -1,4 +1,6 @@
-abstract class Hotel {
+import 'package:equatable/equatable.dart';
+
+class Hotel extends Equatable {
   final int id;
   final String name;
   final String adress;
@@ -11,7 +13,10 @@ abstract class Hotel {
   final String description;
   final List<String> peculiarities;
 
-  Hotel({
+  @override
+  List<Object> get props => [id];
+
+  const Hotel({
     required this.id,
     required this.name,
     required this.adress,
