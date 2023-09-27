@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hotel/src/presentation/src/controller/hotel_page_controller/hotel_controller.dart';
+import 'package:hotel/src/presentation/src/pages/number_page.dart';
 import 'package:hotel/src/presentation/src/widget/big_text_widget.dart';
 import 'package:hotel/src/presentation/src/widget/bloc_with_hotel_widget.dart';
 import 'package:hotel/src/presentation/src/widget/botton_button_widget.dart';
@@ -10,31 +12,17 @@ import 'package:hotel/src/presentation/src/widget/hotel_page_widget/price_of_hot
 import 'package:hotel/src/presentation/src/widget/my_app_bar_widget.dart';
 import 'package:hotel/src/presentation/src/widget/my_divider_widget.dart';
 
-final List<String> listImages = [
-  'https://www.atorus.ru/sites/default/files/upload/image/News/56149/Club_Privé_by_Belek_Club_House.jpg',
-  'https://deluxe.voyage/useruploads/articles/The_Makadi_Spa_Hotel_02.jpg',
-  'https://www.atorus.ru/sites/default/files/upload/image/News/56149/Club_Privé_by_Belek_Club_House.jpg',
-  'https://www.atorus.ru/sites/default/files/upload/image/News/56149/Club_Privé_by_Belek_Club_House.jpg',
-];
-
-final List<String> peculiarities = [
-  "Бесплатный Wifi на всей территории отеля",
-  "1 км до пляжа",
-  "Бесплатный фитнес-клуб",
-  "20 км до аэропорта",
-];
-
-class HotelPage extends StatefulWidget {
+class HotelPage extends StatelessWidget {
   static const String route = '/';
-  const HotelPage({super.key});
+  final HotelController hotelController;
+  const HotelPage({
+    super.key,
+    required this.hotelController,
+  });
 
-  @override
-  State<StatefulWidget> createState() => _HotelPageState();
-}
-
-class _HotelPageState extends State<HotelPage> {
   @override
   Widget build(BuildContext context) {
+    hotelController.getListImages();
     return Scaffold(
       appBar: const MyAppBar(text: 'Отель'),
       body: ListView(
@@ -49,17 +37,31 @@ class _HotelPageState extends State<HotelPage> {
             ),
             child: Column(
               children: [
-                CarouselImage(listImages: listImages),
-                const BlocHotel(
-                  intEstimation: 5,
-                  textEstimation: 'Превосходно',
-                  nameHotel: 'Steigenberger Makadi',
-                  addressHotel:
-                      'Madinat Makadi, Safaga Road, Makadi Bay, Египет',
+                AnimatedBuilder(
+                  animation: hotelController,
+                  builder: (_, __) {
+                    return CarouselImage(listImages: hotelController.imageUrls);
+                  },
                 ),
-                const PriceOfHotel(
-                  priceHotel: 'от 134 673',
-                  priceForIt: 'За тур с перелётом',
+                AnimatedBuilder(
+                  animation: hotelController,
+                  builder: (BuildContext context, Widget? child) {
+                    return BlocHotel(
+                      intEstimation: hotelController.intEstimation,
+                      textEstimation: hotelController.textEstimation,
+                      nameHotel: hotelController.nameHotel,
+                      addressHotel: hotelController.addressHotel,
+                    );
+                  },
+                ),
+                AnimatedBuilder(
+                  animation: hotelController,
+                  builder: (BuildContext context, Widget? child) {
+                    return PriceOfHotel(
+                      priceHotel: hotelController.priceHotel,
+                      priceForIt: hotelController.priceForIt,
+                    );
+                  },
                 ),
               ],
             ),
@@ -83,10 +85,19 @@ class _HotelPageState extends State<HotelPage> {
                     children: [BigText(text: 'Об отеле')],
                   ),
                 ),
-                AboutHotel(peculiarities: peculiarities),
-                const DescriptionHotel(
-                  description:
-                      'Отель VIP-класса с собственными гольф полями. Высокий уровнь сервиса. Рекомендуем для респектабельного отдыха. Отель принимает гостей от 18 лет!',
+                AnimatedBuilder(
+                  animation: hotelController,
+                  builder: (BuildContext context, Widget? child) {
+                    return AboutHotel(peculiarities: hotelController.listPeculiarities);
+                  },
+                ),
+                AnimatedBuilder(
+                  animation: hotelController,
+                  builder: (BuildContext context, Widget? child) {
+                    return DescriptionHotel(
+                      description: hotelController.description,
+                    );
+                  },
                 ),
                 Padding(
                   padding: const EdgeInsets.all(16.0),
@@ -125,7 +136,10 @@ class _HotelPageState extends State<HotelPage> {
               border: Border(top: BorderSide(color: Colors.black12)),
               color: Color(0xFFFFFFFF),
             ),
-            child: const BottonButton(text: 'К выбору номера'),
+            child: const BottonButton(
+              text: 'К выбору номера',
+              destination: NumberPage(),
+            ),
           ),
         ],
       ),
