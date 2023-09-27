@@ -45,14 +45,14 @@ class _NumberPageState extends State<NumberPage> {
         children: [
           NumberCard(
             numberDiscription: 'Стандартный с видом на бассейн или сад',
-            priceHotel: '186 600',
+            priceHotel: 186600,
             priceForIt: 'за 7 ночей с перелётом',
             listImages: listImages,
             peculiarities: peculiarities,
           ),
           NumberCard(
             numberDiscription: 'Стандартный с видом на бассейн или сад',
-            priceHotel: '200 600',
+            priceHotel: 200600,
             priceForIt: 'за 5 ночей с перелётом',
             listImages: listImages2,
             peculiarities: peculiarities2,
