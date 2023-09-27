@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hotel/src/presentation/src/controller/hotel_page_controller/hotel_controller.dart';
+import 'package:hotel/src/presentation/src/pages/hotel_page.dart';
 import 'package:hotel/src/presentation/src/widget/botton_button_widget.dart';
 import 'package:hotel/src/presentation/src/widget/my_app_bar_widget.dart';
 import 'package:hotel/src/presentation/src/widget/big_text_widget.dart';
@@ -27,9 +29,7 @@ class PaidFor extends StatelessWidget {
               horizontal: 23.0,
               vertical: 20.0,
             ),
-            child: SmallText(
-                text:
-                    'Подтверждение заказа №104893 может занять некоторое время (от 1 часа до суток). Как только мы получим ответ от туроператора, вам на почту придет уведомление.'),
+            child: SmallText(text: 'Подтверждение заказа №104893 может занять некоторое время (от 1 часа до суток). Как только мы получим ответ от туроператора, вам на почту придет уведомление.'),
           ),
           const Spacer(),
           Padding(
@@ -39,10 +39,15 @@ class PaidFor extends StatelessWidget {
             ),
             child: Container(
               decoration: const BoxDecoration(
-                border: Border(top: BorderSide(color: Colors.black12)),
+                border: Border(
+                  top: BorderSide(color: Colors.black12),
+                ),
                 color: Color(0xFFFFFFFF),
               ),
-              child: const BottonButton(text: 'Супер!'),
+              child: BottonButton(
+                text: 'Супер!',
+                destination: HotelPage(hotelController: HotelController()),
+              ),
             ),
           )
         ],
