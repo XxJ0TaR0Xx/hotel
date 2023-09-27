@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class PriceOfHotel extends StatelessWidget {
-  final String priceHotel;
+  final int priceHotel;
   final String priceForIt;
   const PriceOfHotel({
     super.key,
@@ -20,7 +20,7 @@ class PriceOfHotel extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Text(
-            '$priceHotel ₽',
+            'от $priceHotel ₽',
             style: const TextStyle(
               fontSize: 30.0,
               fontWeight: FontWeight.w600,

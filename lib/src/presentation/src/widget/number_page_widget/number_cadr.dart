@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hotel/src/presentation/src/pages/reservation_page.dart';
 import 'package:hotel/src/presentation/src/widget/big_text_widget.dart';
 import 'package:hotel/src/presentation/src/widget/container_widget.dart';
 import 'package:hotel/src/presentation/src/widget/hotel_page_widget/about_hote.dart';
@@ -8,7 +9,7 @@ import 'package:hotel/src/presentation/src/widget/hotel_page_widget/price_of_hot
 
 class NumberCard extends StatefulWidget {
   final String numberDiscription;
-  final String priceHotel;
+  final int priceHotel;
   final String priceForIt;
   final List<String> listImages;
   final List<String> peculiarities;
@@ -96,7 +97,10 @@ class _NumberCardState extends State<NumberCard> {
                   right: 16.0,
                   bottom: 16.0,
                 ),
-                child: ButtonToNumber(text: 'Выбрать номер'),
+                child: ButtonToNumber(
+                  text: 'Выбрать номер',
+                  destination: ReservationPage(),
+                ),
               ),
             ],
           ),
