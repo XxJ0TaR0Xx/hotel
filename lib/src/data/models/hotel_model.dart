@@ -44,8 +44,8 @@ class HotelModel extends Hotel {
 
   factory HotelModel.fromMap(Map<String, dynamic> map) {
     Map<String, dynamic> mapAttributes = map['attributes'];
-    List<String> listImageUrls = mapAttributes['imageUrls'].toString().split(',');
-    List<String> listPeculiarities = mapAttributes['peculiarities'].toString().split(',');
+    List<String> listImageUrls = mapAttributes['image_urls'].split(', ');
+    List<String> listPeculiarities = mapAttributes['peculiarities'].split(', ');
     return HotelModel(
       id: map['id'] as int,
       name: mapAttributes['name'] as String,
