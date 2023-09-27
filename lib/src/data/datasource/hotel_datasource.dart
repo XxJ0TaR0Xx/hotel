@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:hotel/core/services/servisec.dart';
+import 'package:hotel/src/data/datasource/booking_datasource.dart';
 import 'package:hotel/src/data/models/hotel_model.dart';
 import 'package:hotel/src/data/utils/status_code_hendler.dart';
 import 'package:injectable/injectable.dart';
@@ -9,12 +10,12 @@ class HotelDatasource {
   final DioModule dio;
   HotelDatasource({required this.dio});
 
-  static const String httpHotel = 'http://127.0.0.1:1337/api/hotels/';
+  String httpHotel = isAndroid(path: 'hotels');
 
   Future<List<HotelModel>> getHotelModel() async {
     try {
       final Response response = await dio.clietn.request(
-        httpHotel,
+        'http://192.168.1.71:1337/api/hotels/',
         options: Options(
           method: 'GET',
         ),

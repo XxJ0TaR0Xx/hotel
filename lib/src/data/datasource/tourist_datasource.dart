@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:hotel/core/services/servisec.dart';
+import 'package:hotel/src/data/datasource/booking_datasource.dart';
 import 'package:hotel/src/data/models/tourist_model.dart';
 import 'package:hotel/src/data/utils/status_code_hendler.dart';
 import 'package:hotel/src/domain/usecases/tourist_usecase/create_tourist_usecase.dart';
@@ -11,6 +12,8 @@ class TouristDatasource {
   TouristDatasource({required this.dio});
 
   Map<String, String> headers = {'Content-Type': 'application/json'};
+
+  String httpTourist = isAndroid(path: 'tourists');
 
   Future<TouristModel> createTourist({required CreateTouristUseCaseParams createTouristUseCaseParams}) async {
     TouristModel touristModel = TouristModel(
@@ -24,7 +27,7 @@ class TouristDatasource {
     );
 
     Response response = await dio.clietn.request(
-      'http://127.0.0.1:1337/api/tourists',
+      httpTourist,
       options: Options(
         method: 'POST',
         headers: headers,
