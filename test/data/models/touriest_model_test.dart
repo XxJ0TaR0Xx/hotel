@@ -151,10 +151,9 @@ void main() async {
       // Act.
 
       final String correctJSON = jsonEncode({
-        "id": 1,
         "data": {
-          'name': 'Admin',
-          'surname': 'Admin',
+          'Name': 'Admin',
+          'Surname': 'Admin',
           'Date_of_birth': '2023-08-31',
           'citizenship': 'РФ',
           'passport_number': 1,
@@ -168,13 +167,12 @@ void main() async {
         surname: 'Admin',
         // DateTime(now.year, now.month, now.day)
         // 'Date_of_birth': '${dateOfBirh.year}-0${dateOfBirh.month}-${dateOfBirh.day}',
-        dateOfBirh: DateTime('${2023.year},'),
+        dateOfBirh: DateTime(2023, 8, 31),
         citizenship: 'РФ',
         passportNumber: 1,
         passportValidityPeriod: 1,
       );
 
-      print(touristModel);
       // Arrange.
       final String result = touristModel.toJson();
 
