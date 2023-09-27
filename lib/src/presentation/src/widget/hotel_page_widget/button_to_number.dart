@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class ButtonToNumber extends StatelessWidget {
   final String text;
+  final Widget destination;
   const ButtonToNumber({
     super.key,
     required this.text,
+    required this.destination,
   });
 
   @override
@@ -16,7 +19,11 @@ class ButtonToNumber extends StatelessWidget {
           child: CupertinoButton(
             borderRadius: const BorderRadius.all(Radius.circular(15.0)),
             color: const Color(0xFF0D72FF),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => destination),
+              );
+            },
             child: Text(text),
           ),
         ),

@@ -4,9 +4,11 @@ import 'package:hotel/src/presentation/src/widget/big_text_widget.dart';
 
 class AddTourist extends StatelessWidget {
   final String text;
+  final Function function;
   const AddTourist({
     super.key,
     required this.text,
+    required this.function,
   });
 
   @override
@@ -21,7 +23,9 @@ class AddTourist extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(right: 16.0),
           child: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              function();
+            },
             icon: SvgPicture.asset('assets/icon_add.svg'),
           ),
         ),

@@ -17,7 +17,9 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       elevation: 0.0,
       leading: IconButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).pop(context);
+        },
         icon: SvgPicture.asset(
           pathIcon,
         ),
