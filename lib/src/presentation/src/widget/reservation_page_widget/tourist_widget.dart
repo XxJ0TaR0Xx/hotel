@@ -7,10 +7,12 @@ import 'package:hotel/src/presentation/src/widget/reservation_page_widget/input_
 class TouristWidget extends StatelessWidget {
   final String countTourist;
   final List<String> listAtributes;
+  final TextEditingController controller;
   const TouristWidget({
     super.key,
     required this.listAtributes,
     required this.countTourist,
+    required this.controller,
   });
 
   @override
@@ -35,7 +37,10 @@ class TouristWidget extends StatelessWidget {
             ),
             children: List.generate(
               listAtributes.length,
-              (index) => InputText(lableText: listAtributes[index]),
+              (index) => InputText(
+                lableText: listAtributes[index],
+                controller: controller,
+              ),
             ),
           ),
         ),
