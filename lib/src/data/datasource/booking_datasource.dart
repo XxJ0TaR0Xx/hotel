@@ -8,9 +8,9 @@ import 'package:injectable/injectable.dart';
 
 String isAndroid({required String path}) {
   if (Platform.isAndroid) {
-    return 'http://192.168.1.71:1337/api/$path/1';
+    return 'http://192.168.1.71:1337/api/$path';
   } else {
-    return 'http://127.0.0.1:1337/api/$path/1';
+    return 'http://127.0.0.1:1337/api/$path';
   }
 }
 
@@ -19,7 +19,7 @@ class BookingDatasource {
   final DioModule dio;
   BookingDatasource({required this.dio});
 
-  String httpBookings = isAndroid(path: 'bookings');
+  String httpBookings = isAndroid(path: 'bookings/1');
 
   Future<BookingModel> getBookingModel() async {
     try {
