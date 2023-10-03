@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class RowPrice extends StatelessWidget {
   final String priceForIt;
-  final String price;
+  final int price;
   final bool isBlue;
   const RowPrice({
     super.key,

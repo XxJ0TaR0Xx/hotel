@@ -4,10 +4,12 @@ import 'package:hotel/src/presentation/src/widget/hotel_page_widget/button_to_nu
 class BottonButton extends StatelessWidget {
   final String text;
   final Widget destination;
+  final Function? function;
   const BottonButton({
     super.key,
     required this.text,
     required this.destination,
+    this.function,
   });
 
   @override
@@ -22,6 +24,7 @@ class BottonButton extends StatelessWidget {
       child: ButtonToNumber(
         text: text,
         destination: destination,
+        function: function,
       ),
     );
   }

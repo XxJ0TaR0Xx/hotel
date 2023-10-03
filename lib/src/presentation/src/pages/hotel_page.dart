@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hotel/src/presentation/src/controller/hotel_page_controller/hotel_controller.dart';
+import 'package:hotel/src/presentation/src/controller/number_page_controller/number_controller.dart';
+import 'package:hotel/src/presentation/src/controller/reservation_page_controlle/reservation_page_controller.dart';
 import 'package:hotel/src/presentation/src/pages/number_page.dart';
 import 'package:hotel/src/presentation/src/widget/big_text_widget.dart';
 import 'package:hotel/src/presentation/src/widget/bloc_with_hotel_widget.dart';
@@ -15,9 +17,13 @@ import 'package:hotel/src/presentation/src/widget/my_divider_widget.dart';
 class HotelPage extends StatelessWidget {
   static const String route = '/';
   final HotelController hotelController;
+  final NumberController numberController;
+  final ReservationController reservationController;
   const HotelPage({
     super.key,
     required this.hotelController,
+    required this.numberController,
+    required this.reservationController,
   });
 
   @override
@@ -88,7 +94,10 @@ class HotelPage extends StatelessWidget {
                 AnimatedBuilder(
                   animation: hotelController,
                   builder: (BuildContext context, Widget? child) {
-                    return AboutHotel(peculiarities: hotelController.listPeculiarities);
+                    return Padding(
+                      padding: const EdgeInsets.only(left: 16.0),
+                      child: AboutHotel(peculiarities: hotelController.listPeculiarities),
+                    );
                   },
                 ),
                 AnimatedBuilder(
@@ -136,9 +145,12 @@ class HotelPage extends StatelessWidget {
               border: Border(top: BorderSide(color: Colors.black12)),
               color: Color(0xFFFFFFFF),
             ),
-            child: const BottonButton(
+            child: BottonButton(
               text: 'К выбору номера',
-              destination: NumberPage(),
+              destination: NumberPage(
+                numberController: numberController,
+                reservationController: reservationController,
+              ),
             ),
           ),
         ],

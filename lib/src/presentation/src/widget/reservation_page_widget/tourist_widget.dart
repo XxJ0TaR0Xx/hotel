@@ -4,10 +4,10 @@ import 'package:hotel/src/presentation/src/widget/big_text_widget.dart';
 import 'package:hotel/src/presentation/src/widget/container_widget.dart';
 import 'package:hotel/src/presentation/src/widget/reservation_page_widget/input_text_widget.dart';
 
-class Tourist extends StatelessWidget {
+class TouristWidget extends StatelessWidget {
   final String countTourist;
   final List<String> listAtributes;
-  const Tourist({
+  const TouristWidget({
     super.key,
     required this.listAtributes,
     required this.countTourist,

@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:hotel/src/domain/entities/booking.dart';
+import 'package:hotel/src/domain/usecases/tourist_usecase/create_tourist_usecase.dart';
+import 'package:hotel/src/presentation/src/controller/number_page_controller/number_controller.dart';
+import 'package:hotel/src/presentation/src/controller/reservation_page_controlle/reservation_page_controller.dart';
 import 'package:hotel/src/presentation/src/pages/paid_for_page.dart';
 import 'package:hotel/src/presentation/src/widget/big_text_widget.dart';
 import 'package:hotel/src/presentation/src/widget/bloc_with_hotel_widget.dart';
@@ -12,47 +16,26 @@ import 'package:hotel/src/presentation/src/widget/reservation_page_widget/row_wi
 import 'package:hotel/src/presentation/src/widget/reservation_page_widget/tourist_widget.dart';
 import 'package:hotel/src/presentation/src/widget/small_text_widget.dart';
 
-List<String> listAtributes = [
-  'Имя',
-  'Фамилия',
-  'Дата рождения',
-  'Гражданство',
-  'Номер загранпаспорта',
-  'Срок действия загранпаспорта',
-];
-
-Map<String, String> mapReservation = {
-  'Вылет из': 'Санкт-Петербург',
-  'Страна, город': 'Египет, Хургада',
-  'Даты': '19.09.2023 – 27.09.2023',
-  'Кол-во ночей': '7 ночей',
-  'Отель': 'Steigenberger Makadi',
-  'Номер': 'Стандартный с видом на бассейн или сад',
-  'Питание': 'Все включено',
-};
-
-class ReservationPage extends StatefulWidget {
+class ReservationPage extends StatelessWidget {
   static const String route = '/number/reservation';
-  const ReservationPage({super.key});
-
-  @override
-  State<ReservationPage> createState() => _ReservationPageState();
-}
-
-class _ReservationPageState extends State<ReservationPage> {
-  List<Widget> tourists = [
-    Tourist(
-      countTourist: 'Первый турист',
-      listAtributes: listAtributes,
-    ),
-    Tourist(
-      countTourist: 'Второй турист',
-      listAtributes: listAtributes,
-    ),
-  ];
+  final NumberController numberController;
+  final ReservationController reservationController;
+  const ReservationPage({
+    super.key,
+    required this.numberController,
+    required this.reservationController,
+  });
 
   @override
   Widget build(BuildContext context) {
+    reservationController.getBooking();
+
+    final Booking booking = reservationController.booking;
+    final int totalPrice = booking.tourPrice + booking.fuelCharge + booking.serviceCharge;
+
+    final TextEditingController numberPhoneController = TextEditingController();
+    final TextEditingController emailController = TextEditingController();
+
     return Scaffold(
       appBar: const MyAppBar(
         text: 'Бронирование',
@@ -61,14 +44,19 @@ class _ReservationPageState extends State<ReservationPage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.only(top: 8.0),
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0),
               child: MyContainer(
-                widget: BlocHotel(
-                  intEstimation: 5,
-                  textEstimation: 'Превосходно',
-                  nameHotel: 'Steigenberger Makadi',
-                  addressHotel: 'Madinat Makadi, Safaga Road, Makadi Bay, Египет',
+                widget: AnimatedBuilder(
+                  animation: reservationController,
+                  builder: (BuildContext context, Widget? child) {
+                    return BlocHotel(
+                      intEstimation: booking.horating,
+                      textEstimation: booking.ratingName,
+                      nameHotel: booking.hotelName,
+                      addressHotel: booking.hotelAdress,
+                    );
+                  },
                 ),
               ),
             ),
@@ -76,26 +64,31 @@ class _ReservationPageState extends State<ReservationPage> {
               padding: const EdgeInsets.only(top: 8.0),
               child: MyContainer(
                 widget: Padding(
-                  padding: const EdgeInsets.only(bottom: 16.0),
-                  child: Column(
-                    children: List.generate(
-                      mapReservation.keys.length,
-                      (index) => BlocReservation(
-                        dateDiscription: mapReservation.keys.toList()[index],
-                        date: mapReservation.values.toList()[index],
-                      ),
-                    ),
-                  ),
-                ),
+                    padding: const EdgeInsets.only(bottom: 16.0),
+                    child: AnimatedBuilder(
+                      animation: reservationController,
+                      builder: (BuildContext context, Widget? child) {
+                        return BlocReservation(
+                          nameHotel: booking.hotelName,
+                          departure: booking.departure,
+                          arrivalCountry: booking.arrivalCountry,
+                          tourDateStart: "${booking.tourDateStart.day}.0${booking.tourDateStart.month}.${booking.tourDateStart.year}",
+                          tourDateStop: "${booking.tourDateStop.day}.0${booking.tourDateStop.month}.${booking.tourDateStop.year}",
+                          numberOfNights: booking.numberOfNights.toString(),
+                          room: booking.room,
+                          nutrition: booking.nutrition,
+                        );
+                      },
+                    )),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(top: 8.0),
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0),
               child: MyContainer(
                 widget: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(
                         right: 16.0,
                         left: 16.0,
@@ -105,7 +98,7 @@ class _ReservationPageState extends State<ReservationPage> {
                       child: BigText(text: 'Информация о покупателе'),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(
+                      padding: const EdgeInsets.only(
                         right: 16.0,
                         left: 16.0,
                         bottom: 16.0,
@@ -115,10 +108,14 @@ class _ReservationPageState extends State<ReservationPage> {
                           InputText(
                             lableText: 'Номер телефона',
                             numberMask: true,
+                            controller: numberPhoneController,
                           ),
-                          InputText(lableText: 'Почта'),
-                          SizedBox(height: 8.0),
-                          SmallText(text: 'Эти данные никому не передаются. После оплаты мы вышли чек на указанный вами номер и почту'),
+                          InputText(
+                            lableText: 'Почта',
+                            controller: emailController,
+                          ),
+                          const SizedBox(height: 8.0),
+                          const SmallText(text: 'Эти данные никому не передаются. После оплаты мы вышли чек на указанный вами номер и почту'),
                         ],
                       ),
                     ),
@@ -126,49 +123,63 @@ class _ReservationPageState extends State<ReservationPage> {
                 ),
               ),
             ),
-            ListView.builder(
-              shrinkWrap: true,
-              itemCount: tourists.length,
-              itemBuilder: (BuildContext context, int index) {
-                return tourists[index];
+            AnimatedBuilder(
+              animation: reservationController,
+              builder: (BuildContext context, Widget? child) {
+                return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: reservationController.tourists.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return reservationController.tourists[index];
+                  },
+                );
               },
             ),
             MyContainer(
-              widget: AddTourist(
-                text: 'Добавить туриста',
-                function: () {
-                  final newTourist = Tourist(
-                    countTourist: 'Новый турист',
-                    listAtributes: listAtributes,
+              widget: AnimatedBuilder(
+                animation: reservationController,
+                builder: (BuildContext context, Widget? child) {
+                  return AddTourist(
+                    text: 'Добавить туриста',
+                    function: () {
+                      reservationController.addTourist(
+                        touristWidget: TouristWidget(
+                          listAtributes: reservationController.listAtributes,
+                          countTourist: 'Новый турист',
+                        ),
+                      );
+                    },
                   );
-                  setState(() {
-                    tourists.add(newTourist);
-                  });
                 },
               ),
             ),
             const SizedBox(height: 8.0),
-            const MyContainer(
-              widget: Column(
-                children: [
-                  RowPrice(
-                    priceForIt: 'Тур',
-                    price: '186 600',
-                  ),
-                  RowPrice(
-                    priceForIt: 'Топливный сбор',
-                    price: '9 300',
-                  ),
-                  RowPrice(
-                    priceForIt: 'Сервисный сбор',
-                    price: '2 136',
-                  ),
-                  RowPrice(
-                    priceForIt: 'К оплате',
-                    price: '198 036',
-                    isBlue: true,
-                  ),
-                ],
+            MyContainer(
+              widget: AnimatedBuilder(
+                animation: reservationController,
+                builder: (BuildContext context, Widget? child) {
+                  return Column(
+                    children: [
+                      RowPrice(
+                        priceForIt: 'Тур',
+                        price: booking.tourPrice,
+                      ),
+                      RowPrice(
+                        priceForIt: 'Топливный сбор',
+                        price: booking.fuelCharge,
+                      ),
+                      RowPrice(
+                        priceForIt: 'Сервисный сбор',
+                        price: booking.serviceCharge,
+                      ),
+                      RowPrice(
+                        priceForIt: 'К оплате',
+                        price: totalPrice,
+                        isBlue: true,
+                      ),
+                    ],
+                  );
+                },
               ),
             ),
             const SizedBox(height: 10.0),
@@ -177,9 +188,18 @@ class _ReservationPageState extends State<ReservationPage> {
                 border: Border(top: BorderSide(color: Colors.black12)),
                 color: Color(0xFFFFFFFF),
               ),
-              child: const BottonButton(
-                text: 'Оплатить 198 036 ₽',
-                destination: PaidFor(),
+              child: AnimatedBuilder(
+                animation: reservationController,
+                builder: (BuildContext context, Widget? child) {
+                  return BottonButton(
+                    text: 'Оплатить $totalPrice ₽',
+                    destination: PaidFor(
+                      numberController: numberController,
+                      reservationController: reservationController,
+                    ),
+                    function: reservationController.createCustomer(number: numberPhoneController.text, email: emailController.text),
+                  );
+                },
               ),
             ),
           ],

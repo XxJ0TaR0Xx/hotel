@@ -6,15 +6,15 @@ import 'package:hotel/src/domain/usecases/get_all_hotel_usecase.dart';
 import 'package:hotel/src/presentation/src/pages/forbidden_page.dart';
 import 'package:injectable/injectable.dart';
 
+const String loading = 'Loading';
+
 @Singleton()
 class HotelController with ChangeNotifier {
-  GetAllHotelUseCase? getAllHotelUseCase;
+  late final GetAllHotelUseCase? getAllHotelUseCase;
 
   HotelController() {
     getAllHotelUseCase = GetAllHotelUseCase();
   }
-
-  final String loading = 'Loading';
 
   List<String>? _imageUrls;
   List<String> get imageUrls => _imageUrls ?? ['https://cdn.lowgif.com/full/eb3afcc902e61559-.gif'];
@@ -48,7 +48,9 @@ class HotelController with ChangeNotifier {
 
     if (serverResultOrError != null) {
       serverResultOrError.fold(
-        (l) => const ForbiddenPage(),
+        (l) {
+          return const ForbiddenPage();
+        },
         (r) {
           final Hotel hotel = r[0];
           _imageUrls = hotel.imageUrls;

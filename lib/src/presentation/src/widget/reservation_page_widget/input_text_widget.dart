@@ -4,9 +4,12 @@ import 'package:masked_text/masked_text.dart';
 class InputText extends StatelessWidget {
   final String lableText;
   final bool numberMask;
+  final TextEditingController controller;
+
   const InputText({
     super.key,
     required this.lableText,
+    required this.controller,
     this.numberMask = false,
   });
 
@@ -25,6 +28,7 @@ class InputText extends StatelessWidget {
         color: Color(0xFFF6F6F9),
       ),
       child: MaskedTextField(
+        controller: controller,
         mask: mask,
         maxLines: 1,
         decoration: InputDecoration(

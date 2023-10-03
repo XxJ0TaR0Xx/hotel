@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hotel/src/presentation/src/controller/number_page_controller/number_controller.dart';
+import 'package:hotel/src/presentation/src/controller/reservation_page_controlle/reservation_page_controller.dart';
 import 'package:hotel/src/presentation/src/pages/reservation_page.dart';
 import 'package:hotel/src/presentation/src/widget/big_text_widget.dart';
 import 'package:hotel/src/presentation/src/widget/container_widget.dart';
@@ -13,6 +15,8 @@ class NumberCard extends StatefulWidget {
   final String priceForIt;
   final List<String> listImages;
   final List<String> peculiarities;
+  final NumberController numberController;
+  final ReservationController reservationController;
   const NumberCard({
     super.key,
     required this.numberDiscription,
@@ -20,6 +24,8 @@ class NumberCard extends StatefulWidget {
     required this.priceForIt,
     required this.listImages,
     required this.peculiarities,
+    required this.numberController,
+    required this.reservationController,
   });
 
   @override
@@ -91,15 +97,18 @@ class _NumberCardState extends State<NumberCard> {
                 priceHotel: widget.priceHotel,
                 priceForIt: widget.priceForIt,
               ),
-              const Padding(
-                padding: EdgeInsets.only(
+              Padding(
+                padding: const EdgeInsets.only(
                   left: 16.0,
                   right: 16.0,
                   bottom: 16.0,
                 ),
                 child: ButtonToNumber(
                   text: 'Выбрать номер',
-                  destination: ReservationPage(),
+                  destination: ReservationPage(
+                    numberController: widget.numberController,
+                    reservationController: widget.reservationController,
+                  ),
                 ),
               ),
             ],
