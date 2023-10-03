@@ -15,7 +15,7 @@ class HotelDatasource {
   Future<List<HotelModel>> getHotelModel() async {
     try {
       final Response response = await dio.clietn.request(
-        'http://192.168.1.71:1337/api/hotels/',
+        httpHotel,
         options: Options(
           method: 'GET',
         ),
