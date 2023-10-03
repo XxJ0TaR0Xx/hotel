@@ -146,6 +146,7 @@ class ReservationPage extends StatelessWidget {
                         touristWidget: TouristWidget(
                           listAtributes: reservationController.listAtributes,
                           countTourist: 'Новый турист',
+                          controller: TextEditingController(),
                         ),
                       );
                     },
@@ -197,7 +198,7 @@ class ReservationPage extends StatelessWidget {
                       numberController: numberController,
                       reservationController: reservationController,
                     ),
-                    function: reservationController.createCustomer(number: numberPhoneController.text, email: emailController.text),
+                    function: () => reservationController.createCustomer(number: numberPhoneController.text, email: emailController.text),
                   );
                 },
               ),
