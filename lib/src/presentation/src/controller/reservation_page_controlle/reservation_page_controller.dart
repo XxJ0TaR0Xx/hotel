@@ -29,10 +29,12 @@ class ReservationController with ChangeNotifier {
       TouristWidget(
         countTourist: 'Первый турист',
         listAtributes: listAtributes,
+        controller: TextEditingController(),
       ),
       TouristWidget(
         countTourist: 'Второй турист',
         listAtributes: listAtributes,
+        controller: TextEditingController(),
       ),
     ];
   }
@@ -89,12 +91,15 @@ class ReservationController with ChangeNotifier {
   void createCustomer({required String number, required String email}) async {
     final Either<Failure, Customer>? serverResultOrError = await postCustomerUseCase?.call(Customer(id: 0, email: email, number: number));
 
+    print('YESSSSSSSS IT IS WORK');
+
     if (serverResultOrError != null) {
       serverResultOrError.fold(
         (l) {
           return const ForbiddenPage();
         },
         (r) {
+          print('RRRRRRR: $r');
           return r;
         },
       );
