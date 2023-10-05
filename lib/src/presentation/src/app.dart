@@ -11,15 +11,16 @@ import 'package:injectable/injectable.dart';
 
 @Injectable()
 class App extends StatelessWidget {
-  late final HotelController hotelController;
-  late final NumberController numberController;
-  late final ReservationController reservationController;
+  final HotelController hotelController;
+  final NumberController numberController;
+  final ReservationController reservationController;
 
-  App({super.key}) {
-    hotelController = HotelController();
-    numberController = NumberController();
-    reservationController = ReservationController();
-  }
+  const App({
+    super.key,
+    required this.hotelController,
+    required this.numberController,
+    required this.reservationController,
+  });
 
   @override
   Widget build(BuildContext context) {
