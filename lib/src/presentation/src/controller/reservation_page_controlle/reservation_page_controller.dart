@@ -7,6 +7,8 @@ import 'package:hotel/src/domain/entities/tourist.dart';
 import 'package:hotel/src/domain/usecases/get_booking_usecase.dart';
 import 'package:hotel/src/domain/usecases/post_cusomer_usecase.dart';
 import 'package:hotel/src/domain/usecases/tourist_usecase/create_tourist_usecase.dart';
+import 'package:hotel/src/domain/validator/add_email_validator.dart';
+import 'package:hotel/src/domain/validator/add_number_validator.dart';
 import 'package:hotel/src/presentation/src/controller/hotel_page_controller/hotel_controller.dart';
 import 'package:hotel/src/presentation/src/pages/forbidden_page.dart';
 import 'package:hotel/src/presentation/src/widget/reservation_page_widget/tourist_widget.dart';
@@ -18,12 +20,17 @@ class ReservationController with ChangeNotifier {
   late final CreateTouristUsecase? createTouristUsecase;
   late final GetBookingUseCase? getBookingUseCase;
   late final PostCustomerUseCase? postCustomerUseCase;
+  late final AddNumberValidator addNumberValidator;
+  late final AddEmailValidator addEmailValidator;
+
   late List<Widget> _tourists;
 
   ReservationController() {
     createTouristUsecase = CreateTouristUsecase();
     getBookingUseCase = GetBookingUseCase();
     postCustomerUseCase = PostCustomerUseCase();
+    addEmailValidator = AddEmailValidator();
+    addNumberValidator = AddNumberValidator();
 
     _tourists = [
       TouristWidget(
@@ -71,6 +78,14 @@ class ReservationController with ChangeNotifier {
 
   List<Widget> get tourists => _tourists;
 
+  Future<bool> checkEmailValidator({required String email}) async {
+    return await addEmailValidator.validate(email);
+  }
+
+  Future<bool> checkNumberValidator({required String number}) async {
+    return await addNumberValidator.validate(number);
+  }
+
   void createTourist({required CreateTouristUseCaseParams createTouristUseCaseParams}) async {
     final Either<Failure, Tourist>? serverResultOrError = await createTouristUsecase?.call(createTouristUseCaseParams);
 
@@ -88,10 +103,11 @@ class ReservationController with ChangeNotifier {
     notifyListeners();
   }
 
-  void createCustomer({required String number, required String email}) async {
+  void createCustomer({
+    required String number,
+    required String email,
+  }) async {
     final Either<Failure, Customer>? serverResultOrError = await postCustomerUseCase?.call(Customer(id: 0, email: email, number: number));
-
-    print('YESSSSSSSS IT IS WORK');
 
     if (serverResultOrError != null) {
       serverResultOrError.fold(
@@ -99,7 +115,6 @@ class ReservationController with ChangeNotifier {
           return const ForbiddenPage();
         },
         (r) {
-          print('RRRRRRR: $r');
           return r;
         },
       );
