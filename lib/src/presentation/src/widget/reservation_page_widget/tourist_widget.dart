@@ -40,6 +40,7 @@ class TouristWidget extends StatelessWidget {
               (index) => InputText(
                 lableText: listAtributes[index],
                 controller: controller,
+                isValid: true,
               ),
             ),
           ),
