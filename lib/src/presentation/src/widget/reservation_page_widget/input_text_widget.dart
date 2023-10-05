@@ -5,11 +5,13 @@ class InputText extends StatelessWidget {
   final String lableText;
   final bool numberMask;
   final TextEditingController controller;
+  final bool isValid;
 
   const InputText({
     super.key,
     required this.lableText,
     required this.controller,
+    required this.isValid,
     this.numberMask = false,
   });
 
@@ -32,6 +34,7 @@ class InputText extends StatelessWidget {
         mask: mask,
         maxLines: 1,
         decoration: InputDecoration(
+          errorText: isValid ? null : 'Не корректный ввод',
           prefixIcon: const SizedBox(),
           prefixIconConstraints: const BoxConstraints(minWidth: 16.0),
           labelText: lableText,
