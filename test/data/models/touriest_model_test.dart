@@ -119,11 +119,10 @@ void main() async {
     test('Method toMap Test', () {
       // Act.
       final Map<String, dynamic> correctMap = {
-        'id': 1,
-        'attributes': {
-          'name': 'Admin',
-          'surname': 'Admin',
-          'Date_of_birth': DateTime.parse('2023-08-31'),
+        'data': {
+          'Name': 'Admin',
+          'Surname': 'Admin',
+          'Date_of_birth': "2023-08-31",
           'citizenship': 'РФ',
           'passport_number': 1,
           'Passport_validity_period': 1,
