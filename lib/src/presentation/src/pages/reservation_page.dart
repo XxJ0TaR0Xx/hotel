@@ -103,20 +103,30 @@ class ReservationPage extends StatelessWidget {
                         left: 16.0,
                         bottom: 16.0,
                       ),
-                      child: Column(
-                        children: [
-                          InputText(
-                            lableText: 'Номер телефона',
-                            numberMask: true,
-                            controller: numberPhoneController,
-                          ),
-                          InputText(
-                            lableText: 'Почта',
-                            controller: emailController,
-                          ),
-                          const SizedBox(height: 8.0),
-                          const SmallText(text: 'Эти данные никому не передаются. После оплаты мы вышли чек на указанный вами номер и почту'),
-                        ],
+                      child: AnimatedBuilder(
+                        animation: reservationController,
+                        builder: (BuildContext context, Widget? child) {
+                          return Column(
+                            children: [
+                              InputText(
+                                lableText: 'Номер телефона',
+                                numberMask: true,
+                                controller: numberPhoneController,
+                                //что б увидел
+                                //
+                                // как засунуть валидатор ,Ю,Ю,!!!!!!!!!!!???????????????
+                                isValid: reservationController.checkNumberValidator(number: numberPhoneController.text),
+                              ),
+                              InputText(
+                                lableText: 'Почта',
+                                controller: emailController,
+                                isValid: true,
+                              ),
+                              const SizedBox(height: 8.0),
+                              const SmallText(text: 'Эти данные никому не передаются. После оплаты мы вышли чек на указанный вами номер и почту'),
+                            ],
+                          );
+                        },
                       ),
                     ),
                   ],
