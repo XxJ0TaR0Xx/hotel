@@ -8,7 +8,7 @@ import 'package:injectable/injectable.dart';
 
 String isAndroid({required String path}) {
   if (Platform.isAndroid) {
-    return 'http://192.168.1.71:1337/api/$path';
+    return 'http://10.0.0.105:1337/api/$path';
   } else {
     return 'http://127.0.0.1:1337/api/$path';
   }

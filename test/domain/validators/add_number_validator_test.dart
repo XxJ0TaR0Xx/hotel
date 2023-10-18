@@ -17,35 +17,35 @@ void main() {
 
     test('Correct Input Value 01', () async {
       // Arrange.
-      final bool result = await addNumberValidator.validate(correctNumber01);
+      final bool result = addNumberValidator.validate(correctNumber01);
       // Assert.
       expect(result, true);
     });
 
     test('Correct Input Value 02', () async {
       // Arrange.
-      final bool result = await addNumberValidator.validate(correctNumber02);
+      final bool result = addNumberValidator.validate(correctNumber02);
       // Assert.
       expect(result, true);
     });
 
     test('Incorrect Input Value 01', () async {
       // Arrange.
-      final bool result = await addNumberValidator.validate(incorrectNumber01);
+      final bool result = addNumberValidator.validate(incorrectNumber01);
       // Assert.
       expect(result, false);
     });
 
     test('Incorrect Input Value 02', () async {
       // Arrange.
-      final bool result = await addNumberValidator.validate(incorrectNumber02);
+      final bool result = addNumberValidator.validate(incorrectNumber02);
       // Assert.
       expect(result, false);
     });
 
     test('Incorrect Input Value 03', () async {
       // Arrange.
-      final bool result = await addNumberValidator.validate(incorrectNumber03);
+      final bool result = addNumberValidator.validate(incorrectNumber03);
       // Assert.
       expect(result, false);
     });

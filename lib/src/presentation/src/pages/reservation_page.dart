@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hotel/src/domain/entities/booking.dart';
-import 'package:hotel/src/domain/usecases/tourist_usecase/create_tourist_usecase.dart';
 import 'package:hotel/src/presentation/src/controller/number_page_controller/number_controller.dart';
 import 'package:hotel/src/presentation/src/controller/reservation_page_controlle/reservation_page_controller.dart';
 import 'package:hotel/src/presentation/src/pages/paid_for_page.dart';
@@ -112,15 +111,19 @@ class ReservationPage extends StatelessWidget {
                                 lableText: 'Номер телефона',
                                 numberMask: true,
                                 controller: numberPhoneController,
-                                //что б увидел
-                                //
-                                // как засунуть валидатор ,Ю,Ю,!!!!!!!!!!!???????????????
-                                isValid: reservationController.checkNumberValidator(number: numberPhoneController.text),
+                                isValid: reservationController.phoneRedFlag,
+                                //!вопрос
+                                function: () {
+                                  reservationController.checkPhone(str: numberPhoneController.text);
+                                },
                               ),
                               InputText(
                                 lableText: 'Почта',
                                 controller: emailController,
-                                isValid: true,
+                                isValid: reservationController.emailRedFlag,
+                                function: () {
+                                  reservationController.checkEmail(str: emailController.text);
+                                },
                               ),
                               const SizedBox(height: 8.0),
                               const SmallText(text: 'Эти данные никому не передаются. После оплаты мы вышли чек на указанный вами номер и почту'),
@@ -208,7 +211,13 @@ class ReservationPage extends StatelessWidget {
                       numberController: numberController,
                       reservationController: reservationController,
                     ),
-                    function: () => reservationController.createCustomer(number: numberPhoneController.text, email: emailController.text),
+                    function: () {
+                      reservationController.createCustomer(
+                        number: numberPhoneController.text,
+                        email: emailController.text,
+                      );
+                    },
+                    check: reservationController.emailRedFlag && reservationController.phoneRedFlag,
                   );
                 },
               ),

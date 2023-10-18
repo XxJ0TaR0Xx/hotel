@@ -5,11 +5,13 @@ class ButtonToNumber extends StatelessWidget {
   final String text;
   final Widget destination;
   final Function? function;
+  final bool? check;
   const ButtonToNumber({
     super.key,
     required this.text,
     required this.destination,
     this.function,
+    this.check,
   });
 
   @override
@@ -22,10 +24,18 @@ class ButtonToNumber extends StatelessWidget {
             borderRadius: const BorderRadius.all(Radius.circular(15.0)),
             color: const Color(0xFF0D72FF),
             onPressed: () {
-              if (function != null) function!();
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => destination),
-              );
+              if (check == true || check == null) {
+                if (function != null) function!();
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => destination),
+                );
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('НЕ РАБОТАЕТ БЛЯТЬ Я ЕБВЛ '),
+                  ),
+                );
+              }
             },
             child: Text(text),
           ),

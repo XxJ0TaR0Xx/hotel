@@ -5,11 +5,13 @@ class BottonButton extends StatelessWidget {
   final String text;
   final Widget destination;
   final Function? function;
+  final bool? check;
   const BottonButton({
     super.key,
     required this.text,
     required this.destination,
     this.function,
+    this.check,
   });
 
   @override
@@ -25,6 +27,7 @@ class BottonButton extends StatelessWidget {
         text: text,
         destination: destination,
         function: function,
+        check: check,
       ),
     );
   }

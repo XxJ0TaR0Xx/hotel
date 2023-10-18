@@ -16,7 +16,7 @@ class NumberController with ChangeNotifier {
   }
 
   int? _lenghtRoomList;
-  int get lenghtRoomList => _lenghtRoomList ?? 0;
+  int get lenghtRoomList => _lenghtRoomList ?? 1;
 
   Room? _room;
   Room get room => _room ?? const Room(id: 0, name: loading, price: 0, pricePer: loading, peculiarities: [loading], imageUrls: ['https://cdn.lowgif.com/full/eb3afcc902e61559-.gif']);

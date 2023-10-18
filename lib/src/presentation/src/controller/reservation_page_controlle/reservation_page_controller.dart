@@ -76,14 +76,22 @@ class ReservationController with ChangeNotifier {
     'Срок действия загранпаспорта',
   ];
 
+  bool? _phoneRedFlag;
+  bool get phoneRedFlag => _phoneRedFlag ?? false;
+
+  bool? _emailRedFlag;
+  bool get emailRedFlag => _emailRedFlag ?? false;
+
   List<Widget> get tourists => _tourists;
 
-  Future<bool> checkEmailValidator({required String email}) async {
-    return await addEmailValidator.validate(email);
+  void checkPhone({required String str}) {
+    _phoneRedFlag = addNumberValidator.validate(str);
+    notifyListeners();
   }
 
-  Future<bool> checkNumberValidator({required String number}) async {
-    return await addNumberValidator.validate(number);
+  void checkEmail({required String str}) {
+    _emailRedFlag = addEmailValidator.validate(str);
+    notifyListeners();
   }
 
   void createTourist({required CreateTouristUseCaseParams createTouristUseCaseParams}) async {

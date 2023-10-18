@@ -17,35 +17,35 @@ void main() {
 
     test('Correct test 01', () async {
       // Arrange.
-      final bool result = await addEmailValidator.validate(correctEmail01);
+      final bool result = addEmailValidator.validate(correctEmail01);
       // Assert.
       expect(result, true);
     });
 
     test('Correct test 02', () async {
       // Arrange.
-      final bool result = await addEmailValidator.validate(correctEmail02);
+      final bool result = addEmailValidator.validate(correctEmail02);
       // Assert.
       expect(result, true);
     });
 
     test('Incorrect test 01', () async {
       // Arrange.
-      final bool result = await addEmailValidator.validate(incorrectEmail01);
+      final bool result = addEmailValidator.validate(incorrectEmail01);
       // Assert.
       expect(result, false);
     });
 
     test('Incorrect test 02', () async {
       // Arrange.
-      final bool result = await addEmailValidator.validate(incorrectEmail02);
+      final bool result = addEmailValidator.validate(incorrectEmail02);
       // Assert.
       expect(result, false);
     });
 
     test('Incorrect test 03', () async {
       // Arrange.
-      final bool result = await addEmailValidator.validate(incorrectEmail03);
+      final bool result = addEmailValidator.validate(incorrectEmail03);
       // Assert.
       expect(result, false);
     });

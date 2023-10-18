@@ -6,6 +6,7 @@ class InputText extends StatelessWidget {
   final bool numberMask;
   final TextEditingController controller;
   final bool isValid;
+  final Function()? function;
 
   const InputText({
     super.key,
@@ -13,6 +14,7 @@ class InputText extends StatelessWidget {
     required this.controller,
     required this.isValid,
     this.numberMask = false,
+    this.function,
   });
 
   @override
@@ -21,6 +23,13 @@ class InputText extends StatelessWidget {
 
     if (numberMask) {
       mask = "+7-###-###-##-##";
+    }
+
+    String? check() {
+      if (!isValid) {
+        return 'Не корректный ввод';
+      }
+      return null;
     }
 
     return Container(
@@ -33,14 +42,13 @@ class InputText extends StatelessWidget {
         controller: controller,
         mask: mask,
         maxLines: 1,
+        onEditingComplete: function,
         decoration: InputDecoration(
-          errorText: isValid ? null : 'Не корректный ввод',
+          errorText: check(),
           prefixIcon: const SizedBox(),
           prefixIconConstraints: const BoxConstraints(minWidth: 16.0),
           labelText: lableText,
-          labelStyle: const TextStyle(
-            color: Color(0xFFA9ABB7),
-          ),
+          labelStyle: const TextStyle(color: Color(0xFFA9ABB7)),
           border: InputBorder.none,
         ),
       ),

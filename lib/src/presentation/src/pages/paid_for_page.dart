@@ -10,7 +10,7 @@ import 'package:hotel/src/presentation/src/widget/small_text_widget.dart';
 
 class PaidFor extends StatelessWidget {
   static const String route = '/number/reservation/paidfor';
-  final NumberController numberController;
+  final NumberController numberController; // перенести эти контроллеры в контроелеры
   final ReservationController reservationController;
 
   const PaidFor({
