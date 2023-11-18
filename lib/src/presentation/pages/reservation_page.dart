@@ -1,27 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:hotel/src/domain/entities/booking.dart';
-import 'package:hotel/src/presentation/src/controller/number_page_controller/number_controller.dart';
-import 'package:hotel/src/presentation/src/controller/reservation_page_controlle/reservation_page_controller.dart';
-import 'package:hotel/src/presentation/src/pages/paid_for_page.dart';
-import 'package:hotel/src/presentation/src/widget/big_text_widget.dart';
-import 'package:hotel/src/presentation/src/widget/bloc_with_hotel_widget.dart';
-import 'package:hotel/src/presentation/src/widget/botton_button_widget.dart';
-import 'package:hotel/src/presentation/src/widget/container_widget.dart';
-import 'package:hotel/src/presentation/src/widget/my_app_bar_widget.dart';
-import 'package:hotel/src/presentation/src/widget/reservation_page_widget/add_tourist_widget.dart';
-import 'package:hotel/src/presentation/src/widget/reservation_page_widget/block_reservation_widget.dart';
-import 'package:hotel/src/presentation/src/widget/reservation_page_widget/input_text_widget.dart';
-import 'package:hotel/src/presentation/src/widget/reservation_page_widget/row_with_price_widget.dart';
-import 'package:hotel/src/presentation/src/widget/reservation_page_widget/tourist_widget.dart';
-import 'package:hotel/src/presentation/src/widget/small_text_widget.dart';
+import 'package:hotel/src/presentation/controller/reservation_page_controlle/reservation_page_controller.dart';
+import 'package:hotel/src/presentation/pages/paid_for_page.dart';
+import 'package:hotel/src/presentation/widget/common_widgets/big_text_widget.dart';
+import 'package:hotel/src/presentation/widget/common_widgets/bloc_with_hotel_widget.dart';
+import 'package:hotel/src/presentation/widget/common_widgets/botton_button_widget.dart';
+import 'package:hotel/src/presentation/widget/common_widgets/container_widget.dart';
+import 'package:hotel/src/presentation/widget/common_widgets/my_app_bar_widget.dart';
+import 'package:hotel/src/presentation/widget/common_widgets/small_text_widget.dart';
+import 'package:hotel/src/presentation/widget/reservation_page_widget/add_tourist_widget.dart';
+import 'package:hotel/src/presentation/widget/reservation_page_widget/block_reservation_widget.dart';
+import 'package:hotel/src/presentation/widget/reservation_page_widget/input_text_widget.dart';
+import 'package:hotel/src/presentation/widget/reservation_page_widget/row_with_price_widget.dart';
+import 'package:hotel/src/presentation/widget/reservation_page_widget/tourist_widget.dart';
 
 class ReservationPage extends StatelessWidget {
   static const String route = '/number/reservation';
-  final NumberController numberController;
   final ReservationController reservationController;
   const ReservationPage({
     super.key,
-    required this.numberController,
     required this.reservationController,
   });
 
@@ -38,7 +35,7 @@ class ReservationPage extends StatelessWidget {
     return Scaffold(
       appBar: const MyAppBar(
         text: 'Бронирование',
-        pathIcon: 'assets/arrow_back.svg',
+        pathIcon: 'assets/png/arrow_back.svg',
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -207,10 +204,7 @@ class ReservationPage extends StatelessWidget {
                 builder: (BuildContext context, Widget? child) {
                   return BottonButton(
                     text: 'Оплатить $totalPrice ₽',
-                    destination: PaidFor(
-                      numberController: numberController,
-                      reservationController: reservationController,
-                    ),
+                    destination: const PaidFor(),
                     function: () {
                       reservationController.createCustomer(
                         number: numberPhoneController.text,

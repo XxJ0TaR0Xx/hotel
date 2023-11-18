@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:hotel/src/presentation/src/widget/big_text_widget.dart';
+import 'package:hotel/src/presentation/widget/common_widgets/big_text_widget.dart';
 
 class AddTourist extends StatelessWidget {
   final String text;

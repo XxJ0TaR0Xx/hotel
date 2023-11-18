@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:hotel/core/services/servisec.dart';
-import 'package:hotel/src/data/datasource/booking_datasource.dart';
 import 'package:hotel/src/data/models/customer_model.dart';
+import 'package:hotel/src/data/utils/api_config.dart';
 import 'package:hotel/src/data/utils/status_code_hendler.dart';
 import 'package:injectable/injectable.dart';
 
@@ -10,7 +10,7 @@ class CustomerDatasource {
   final DioModule dio;
   CustomerDatasource({required this.dio});
 
-  String httpCustomers = isAndroid(path: 'customers');
+  String httpCustomers = '${ApiConfig.apiUri}customers';
 
   Future<CustomerModel> postCustomer({required CustomerModel customerModel}) async {
     try {

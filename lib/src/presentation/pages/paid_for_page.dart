@@ -1,22 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:hotel/src/presentation/src/controller/hotel_page_controller/hotel_controller.dart';
-import 'package:hotel/src/presentation/src/controller/number_page_controller/number_controller.dart';
-import 'package:hotel/src/presentation/src/controller/reservation_page_controlle/reservation_page_controller.dart';
-import 'package:hotel/src/presentation/src/pages/hotel_page.dart';
-import 'package:hotel/src/presentation/src/widget/botton_button_widget.dart';
-import 'package:hotel/src/presentation/src/widget/my_app_bar_widget.dart';
-import 'package:hotel/src/presentation/src/widget/big_text_widget.dart';
-import 'package:hotel/src/presentation/src/widget/small_text_widget.dart';
+import 'package:hotel/core/services/servisec.dart';
+
+import 'package:hotel/src/presentation/controller/hotel_page_controller/hotel_controller.dart';
+import 'package:hotel/src/presentation/pages/hotel_page.dart';
+import 'package:hotel/src/presentation/widget/common_widgets/big_text_widget.dart';
+import 'package:hotel/src/presentation/widget/common_widgets/botton_button_widget.dart';
+import 'package:hotel/src/presentation/widget/common_widgets/my_app_bar_widget.dart';
+import 'package:hotel/src/presentation/widget/common_widgets/small_text_widget.dart';
 
 class PaidFor extends StatelessWidget {
   static const String route = '/number/reservation/paidfor';
-  final NumberController numberController; // перенести эти контроллеры в контроелеры
-  final ReservationController reservationController;
 
   const PaidFor({
     super.key,
-    required this.numberController,
-    required this.reservationController,
   });
 
   @override
@@ -56,9 +52,7 @@ class PaidFor extends StatelessWidget {
               child: BottonButton(
                 text: 'Супер!',
                 destination: HotelPage(
-                  hotelController: HotelController(),
-                  numberController: numberController,
-                  reservationController: reservationController,
+                  hotelController: servisec<HotelController>(),
                 ),
               ),
             ),

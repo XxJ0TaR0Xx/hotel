@@ -1,29 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:hotel/src/presentation/src/controller/hotel_page_controller/hotel_controller.dart';
-import 'package:hotel/src/presentation/src/controller/number_page_controller/number_controller.dart';
-import 'package:hotel/src/presentation/src/controller/reservation_page_controlle/reservation_page_controller.dart';
-import 'package:hotel/src/presentation/src/pages/number_page.dart';
-import 'package:hotel/src/presentation/src/widget/big_text_widget.dart';
-import 'package:hotel/src/presentation/src/widget/bloc_with_hotel_widget.dart';
-import 'package:hotel/src/presentation/src/widget/botton_button_widget.dart';
-import 'package:hotel/src/presentation/src/widget/hotel_page_widget/about_hote.dart';
-import 'package:hotel/src/presentation/src/widget/hotel_page_widget/carousel_image.dart';
-import 'package:hotel/src/presentation/src/widget/hotel_page_widget/description_hotel.dart';
-import 'package:hotel/src/presentation/src/widget/hotel_page_widget/hotel_information_widget.dart';
-import 'package:hotel/src/presentation/src/widget/hotel_page_widget/price_of_hotel.dart';
-import 'package:hotel/src/presentation/src/widget/my_app_bar_widget.dart';
-import 'package:hotel/src/presentation/src/widget/my_divider_widget.dart';
+import 'package:hotel/core/services/servisec.dart';
+import 'package:hotel/src/presentation/controller/hotel_page_controller/hotel_controller.dart';
+import 'package:hotel/src/presentation/controller/number_page_controller/number_controller.dart';
+import 'package:hotel/src/presentation/pages/number_page.dart';
+import 'package:hotel/src/presentation/widget/common_widgets/big_text_widget.dart';
+import 'package:hotel/src/presentation/widget/common_widgets/bloc_with_hotel_widget.dart';
+import 'package:hotel/src/presentation/widget/common_widgets/botton_button_widget.dart';
+import 'package:hotel/src/presentation/widget/common_widgets/my_app_bar_widget.dart';
+import 'package:hotel/src/presentation/widget/common_widgets/my_divider_widget.dart';
+import 'package:hotel/src/presentation/widget/hotel_page_widget/about_hote.dart';
+import 'package:hotel/src/presentation/widget/hotel_page_widget/carousel_image.dart';
+import 'package:hotel/src/presentation/widget/hotel_page_widget/description_hotel.dart';
+import 'package:hotel/src/presentation/widget/hotel_page_widget/hotel_information_widget.dart';
+import 'package:hotel/src/presentation/widget/hotel_page_widget/price_of_hotel.dart';
 
 class HotelPage extends StatelessWidget {
   static const String route = '/';
   final HotelController hotelController;
-  final NumberController numberController;
-  final ReservationController reservationController;
   const HotelPage({
     super.key,
     required this.hotelController,
-    required this.numberController,
-    required this.reservationController,
   });
 
   @override
@@ -148,8 +144,7 @@ class HotelPage extends StatelessWidget {
             child: BottonButton(
               text: 'К выбору номера',
               destination: NumberPage(
-                numberController: numberController,
-                reservationController: reservationController,
+                numberController: servisec<NumberController>(), // services
               ),
             ),
           ),

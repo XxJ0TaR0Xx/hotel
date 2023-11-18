@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hotel/src/presentation/src/widget/hotel_page_widget/button_to_number.dart';
+import 'package:hotel/src/presentation/widget/hotel_page_widget/button_to_number.dart';
 
 class BottonButton extends StatelessWidget {
   final String text;

@@ -1,5 +1,7 @@
 import 'package:hotel/core/validator/validator.dart';
+import 'package:injectable/injectable.dart';
 
+@Singleton()
 class AddEmailValidator extends Validator<String> {
   @override
   bool validate(String t) {

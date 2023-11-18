@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:hotel/src/presentation/src/controller/number_page_controller/number_controller.dart';
-import 'package:hotel/src/presentation/src/controller/reservation_page_controlle/reservation_page_controller.dart';
-import 'package:hotel/src/presentation/src/pages/reservation_page.dart';
-import 'package:hotel/src/presentation/src/widget/big_text_widget.dart';
-import 'package:hotel/src/presentation/src/widget/container_widget.dart';
-import 'package:hotel/src/presentation/src/widget/hotel_page_widget/about_hote.dart';
-import 'package:hotel/src/presentation/src/widget/hotel_page_widget/button_to_number.dart';
-import 'package:hotel/src/presentation/src/widget/hotel_page_widget/carousel_image.dart';
-import 'package:hotel/src/presentation/src/widget/hotel_page_widget/price_of_hotel.dart';
+import 'package:hotel/src/presentation/controller/number_page_controller/number_controller.dart';
+import 'package:hotel/src/presentation/controller/reservation_page_controlle/reservation_page_controller.dart';
+import 'package:hotel/src/presentation/pages/reservation_page.dart';
+import 'package:hotel/src/presentation/widget/common_widgets/big_text_widget.dart';
+import 'package:hotel/src/presentation/widget/common_widgets/container_widget.dart';
+import 'package:hotel/src/presentation/widget/hotel_page_widget/about_hote.dart';
+import 'package:hotel/src/presentation/widget/hotel_page_widget/button_to_number.dart';
+import 'package:hotel/src/presentation/widget/hotel_page_widget/carousel_image.dart';
+import 'package:hotel/src/presentation/widget/hotel_page_widget/price_of_hotel.dart';
 
 class NumberCard extends StatefulWidget {
   final String numberDiscription;
@@ -106,7 +106,6 @@ class _NumberCardState extends State<NumberCard> {
                 child: ButtonToNumber(
                   text: 'Выбрать номер',
                   destination: ReservationPage(
-                    numberController: widget.numberController,
                     reservationController: widget.reservationController,
                   ),
                 ),

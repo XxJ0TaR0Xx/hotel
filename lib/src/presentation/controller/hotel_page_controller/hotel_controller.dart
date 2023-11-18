@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:hotel/core/failures/failure.dart';
 import 'package:hotel/src/domain/entities/hotel.dart';
 import 'package:hotel/src/domain/usecases/get_all_hotel_usecase.dart';
-import 'package:hotel/src/presentation/src/pages/forbidden_page.dart';
+import 'package:hotel/src/presentation/pages/forbidden_page.dart';
 import 'package:injectable/injectable.dart';
 
 const String loading = 'Loading';
 
 @Singleton()
 class HotelController with ChangeNotifier {
-  late final GetAllHotelUseCase? getAllHotelUseCase;
+  final GetAllHotelUseCase getAllHotelUseCase;
 
-  HotelController() {
-    getAllHotelUseCase = GetAllHotelUseCase();
-  }
+  HotelController({
+    required this.getAllHotelUseCase,
+  });
 
   List<String>? _imageUrls;
   List<String> get imageUrls => _imageUrls ?? ['https://cdn.lowgif.com/full/eb3afcc902e61559-.gif'];
@@ -44,27 +44,25 @@ class HotelController with ChangeNotifier {
   String get description => _description ?? loading;
 
   void getListImages() async {
-    final Either<Failure, List<Hotel>>? serverResultOrError = await getAllHotelUseCase?.call(unit);
+    final Either<Failure, List<Hotel>> serverResultOrError = await getAllHotelUseCase.call(unit);
 
-    if (serverResultOrError != null) {
-      serverResultOrError.fold(
-        (l) {
-          return const ForbiddenPage();
-        },
-        (r) {
-          final Hotel hotel = r[0];
-          _imageUrls = hotel.imageUrls;
-          _listPeculiarities = hotel.peculiarities;
-          _intEstimation = hotel.rating;
-          _textEstimation = hotel.ratingName;
-          _nameHotel = hotel.name;
-          _addressHotel = hotel.adress;
-          _priceHotel = hotel.minimalPrice;
-          _priceForIt = hotel.priceForIt;
-          _description = hotel.description;
-        },
-      );
-    }
+    serverResultOrError.fold(
+      (l) {
+        return const ForbiddenPage();
+      },
+      (r) {
+        final Hotel hotel = r[0];
+        _imageUrls = hotel.imageUrls;
+        _listPeculiarities = hotel.peculiarities;
+        _intEstimation = hotel.rating;
+        _textEstimation = hotel.ratingName;
+        _nameHotel = hotel.name;
+        _addressHotel = hotel.adress;
+        _priceHotel = hotel.minimalPrice;
+        _priceForIt = hotel.priceForIt;
+        _description = hotel.description;
+      },
+    );
     notifyListeners();
   }
 }

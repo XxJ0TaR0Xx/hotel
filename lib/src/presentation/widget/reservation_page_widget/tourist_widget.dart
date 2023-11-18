@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hotel/src/presentation/src/widget/big_text_widget.dart';
-import 'package:hotel/src/presentation/src/widget/container_widget.dart';
-import 'package:hotel/src/presentation/src/widget/reservation_page_widget/input_text_widget.dart';
+import 'package:hotel/src/presentation/widget/common_widgets/big_text_widget.dart';
+import 'package:hotel/src/presentation/widget/common_widgets/container_widget.dart';
+import 'package:hotel/src/presentation/widget/reservation_page_widget/input_text_widget.dart';
 
 class TouristWidget extends StatelessWidget {
   final String countTourist;

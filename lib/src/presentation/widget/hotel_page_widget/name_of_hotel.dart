@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hotel/src/presentation/src/widget/big_text_widget.dart';
+import 'package:hotel/src/presentation/widget/common_widgets/big_text_widget.dart';
 
 class NameOfHotel extends StatelessWidget {
   final String nameHotel;
