@@ -1,29 +1,30 @@
 import 'package:dio/dio.dart';
 import 'package:hotel/core/services/servisec.dart';
-import 'package:hotel/src/data/models/bookind_model.dart';
+import 'package:hotel/src/data/models/customer_model.dart';
 import 'package:hotel/src/data/utils/api_config.dart';
 import 'package:hotel/src/data/utils/status_code_hendler.dart';
 import 'package:injectable/injectable.dart';
 
 @Injectable()
-class BookingDatasource {
+class CustomerDatasource {
   final DioModule dio;
-  BookingDatasource({required this.dio});
+  CustomerDatasource({required this.dio});
 
-  String httpBookings = '${ApiConfig.apiUri}bookings/1';
+  String httpCustomers = '${ApiConfig.apiUri}customers';
 
-  Future<BookingModel> getBookingModel() async {
+  Future<CustomerModel> postCustomer({required CustomerModel customerModel}) async {
     try {
       final Response response = await dio.clietn.request(
-        httpBookings,
+        httpCustomers,
         options: Options(
-          method: 'GET',
+          method: 'POST',
         ),
+        data: customerModel.toJson(),
       );
 
       StatusCodeHandler.check(response.statusCode.toString());
 
-      return BookingModel.fromMap(response.data['data']);
+      return CustomerModel.fromMap(response.data['data']);
     } catch (_) {
       rethrow;
     }
