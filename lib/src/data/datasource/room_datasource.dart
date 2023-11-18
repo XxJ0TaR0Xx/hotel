@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:hotel/core/services/servisec.dart';
 import 'package:hotel/src/data/models/room_model.dart';
+import 'package:hotel/src/data/utils/api_config.dart';
 import 'package:hotel/src/data/utils/status_code_hendler.dart';
 import 'package:injectable/injectable.dart';
 
@@ -9,7 +10,7 @@ class RoomDatasour {
   final DioModule dio;
   RoomDatasour({required this.dio});
 
-  static const String httpRooms = 'http://127.0.0.1:1337/api/rooms/';
+  String httpRooms = '${ApiConfig.apiUri}rooms';
 
   Future<List<RoomModel>> getAllRoomModel() async {
     try {

@@ -18,6 +18,8 @@ dependencies:
   masked_text: ^1.1.2
   injectable: ^2.3.0
   dio: ^5.3.3
+  flutter_dotenv: ^5.1.0
+  
 
 
 dev_dependencies:
@@ -31,6 +33,6 @@ dev_dependencies:
 flutter:
   assets:
       - assets/
-      - assets/paid_for.svg
-      - assets/paid_for.png
+      - assets/png/paid_for.png
+      - assets/env/.env
   uses-material-design: true
